@@ -2,7 +2,7 @@
 
 <div align="center">
 
-### 👉 [**Click here to view the live site**](https://thearchery.github.io/Profesional-Profile/) 👈
+### 👉 [**Click here to view the live site**](https://thearchery.github.io/portfoliov2-personal/) 👈
 
 *Business Analyst & Founder — building data-driven products at the intersection of finance and AI.*
 </div>
