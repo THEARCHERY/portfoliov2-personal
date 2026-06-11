@@ -1,47 +1,37 @@
-# Gonzalo Romero Carrato — Portfolio
+# Gonzalo Maria Romero Carrato — Personal Portfolio
 
-Personal portfolio website for Gonzalo Maria Romero Carrato. Business Analyst, Founder of [The Morning Club](https://forms.gle/wWZHh7AyqqP6gAzJA), and builder at the intersection of finance and AI.
+<div align="center">
 
-## Stack
+### 👉 [**Click here to view the live site**](https://thearchery.github.io/Profesional-Profile/) 👈
 
-- Vanilla HTML / CSS / JavaScript
-- [Phosphor Icons](https://phosphoricons.com/)
-- [Inter](https://fonts.google.com/specimen/Inter) via Google Fonts
-- Contact form via [Formspree](https://formspree.io/)
+*Business Analyst & Founder — building data-driven products at the intersection of finance and AI.*
+</div>
 
-## Sections
+---
 
-- **Hero** — Editorial display name, availability status, metadata
-- **Who I Am** — Statement card, pillars, bio strip
-- **Experience** — Animated timeline (HAVAS Media, The Morning Club, Caritas)
-- **Projects** — Numbered editorial list with image thumbnails
-- **Skills** — Category grid + infinite marquee
-- **Education** — Timeline (UFV Business Analytics + certifications)
-- **Contact** — Form + contact info
+## ✨ About
+Personal portfolio website with a modern minimal design (Linear/Stripe-inspired): clean light UI with indigo→violet accents, smooth scrolling, GSAP-powered animations, a horizontal-scroll project showcase, an interactive experience accordion and a live "daily pipeline" terminal card.
 
-## Projects featured
+## 🚀 Featured Projects
 
-| # | Project | Status |
-|---|---------|--------|
-| 01 | [The Morning Club](https://forms.gle/wWZHh7AyqqP6gAzJA) | Live — Private Beta |
-| 02 | Astralis (AI Assistant) | Discontinued |
-| 03 | [Social Media Audit Bot](https://thearchery.github.io/Audit-Bot/) | Active — Fiverr |
+| Project | Status | Description |
+|---|---|---|
+| **The Morning Club** | 🟢 Live — Private Beta | AI-driven financial news summaries, sentiment analysis & daily metrics |
+| **Astralis** | ⚪ Discontinued | Multi-model AI assistant with voice synthesis & phone-call automation |
+| **Audit Bot** | 🟢 Active — Fiverr | Automated social media account analyzer with actionable PDF reports |
 
-## Development
+## 🛠️ Tech
+- Single-page static site: `index.html` (HTML + CSS + vanilla JS)
+- [GSAP + ScrollTrigger](https://gsap.com/) — scroll animations & horizontal project gallery
+- [Lenis](https://lenis.darkroom.engineering/) — smooth scrolling
+- [Phosphor Icons](https://phosphoricons.com/) · Google Fonts (Inter, JetBrains Mono)
+- Deployed with **GitHub Pages** via GitHub Actions
 
-No build step required. Open `index.html` directly in a browser, or serve locally:
+## 📬 Contact
+- **Email:** gonzalo.rcarrato@gmail.com
+- **Location:** Madrid, Spain — open to remote
 
-```bash
-npx serve .
-```
-
-To use the React/Vite setup (optional):
-
-```bash
-npm install
-npm run dev
-```
-
-## Contact
-
-**gonzalo.rcarrato@gmail.com** · Madrid, Spain
+---
+<div align="center">
+© Gonzalo Maria Romero Carrato · Finance × AI × Automation
+</div>
