@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="'JetBrains Mono', ui-monospace, monospace">
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6366f1" stop-opacity=".30"/>
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity=".05"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="800" fill="#0e0f15"/>
+  <rect width="1200" height="800" fill="url(#dots)"/>
+
+  <!-- horizontal grid -->
+  <g stroke="#262833" stroke-width="1">
+    <line x1="0" y1="140" x2="1200" y2="140"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="460" x2="1200" y2="460"/>
+    <line x1="0" y1="620" x2="1200" y2="620"/>
+  </g>
+
+  <!-- Monte Carlo fan (faint resampled paths) -->
+  <g fill="none" stroke-width="2" opacity=".16">
+    <path d="M-20,700 C240,660 380,690 520,620 C660,550 800,590 940,490 C1060,420 1140,410 1220,380" stroke="#8b5cf6"/>
+    <path d="M-20,700 C240,680 380,620 520,650 C660,680 800,530 940,540 C1060,545 1140,480 1220,460" stroke="#8b5cf6"/>
+    <path d="M-20,700 C240,640 380,660 520,580 C660,500 800,540 940,440 C1060,370 1140,380 1220,330" stroke="#6366f1"/>
+    <path d="M-20,700 C240,670 380,710 520,670 C660,630 800,660 940,580 C1060,520 1140,530 1220,490" stroke="#6366f1"/>
+  </g>
+
+  <!-- main equity curve with drawdown -->
+  <path d="M-20,700 C200,670 300,680 400,630 C480,590 540,650 620,605 C720,550 800,570 880,480 C980,395 1090,390 1220,295 L1220,810 L-20,810 Z" fill="url(#area)"/>
+  <path d="M-20,700 C200,670 300,680 400,630 C480,590 540,650 620,605 C720,550 800,570 880,480 C980,395 1090,390 1220,295" fill="none" stroke="url(#grad)" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- centered title block (safe zone for cover-cropping) -->
+  <g text-anchor="middle">
+    <text x="600" y="330" fill="#f4f5fa" font-size="72" font-weight="700" letter-spacing="4">TRADES2</text>
+    <text x="600" y="378" fill="#8b90a0" font-size="20" letter-spacing="6">ANTI-OVERFITTING VALIDATION</text>
+
+    <!-- protocol chips -->
+    <g font-size="16" letter-spacing="2">
+      <rect x="404" y="418" width="180" height="44" rx="22" fill="#16171f" stroke="#262833"/>
+      <text x="494" y="446" fill="#a5b0ff">3 UNIVERSES</text>
+
+      <rect x="600" y="418" width="196" height="44" rx="22" fill="#16171f" stroke="#262833"/>
+      <text x="698" y="446" fill="#c4adff">MONTE CARLO</text>
+    </g>
+    <g font-size="16" letter-spacing="2">
+      <rect x="454" y="478" width="292" height="44" rx="22" fill="#16171f" stroke="#262833"/>
+      <circle cx="486" cy="500" r="6" fill="#10b981"/>
+      <text x="622" y="506" fill="#5fe5b8">FORWARD TEST · LIVE</text>
+    </g>
+
+    <text x="600" y="572" fill="#8b90a0" font-size="17" letter-spacing="2">7Y DATA · 180+ ASSETS · 2 SURVIVORS / 9</text>
+  </g>
+</svg>
