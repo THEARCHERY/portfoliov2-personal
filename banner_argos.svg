@@ -38,7 +38,7 @@
 
   <!-- centered title block (safe zone for cover-cropping) -->
   <g text-anchor="middle">
-    <text x="600" y="330" fill="#f4f5fa" font-size="72" font-weight="700" letter-spacing="4">TRADES2</text>
+    <text x="600" y="330" fill="#f4f5fa" font-size="72" font-weight="700" letter-spacing="10">ARGOS</text>
     <text x="600" y="378" fill="#8b90a0" font-size="20" letter-spacing="6">ANTI-OVERFITTING VALIDATION</text>
 
     <!-- protocol chips -->
