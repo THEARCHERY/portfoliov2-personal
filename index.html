@@ -851,7 +851,7 @@
 
     <div class="hero-stats gs-reveal" data-hero>
         <div class="hero-stat">
-            <div class="hero-stat-num"><span data-count="3">0</span></div>
+            <div class="hero-stat-num"><span data-count="4">0</span></div>
             <div class="hero-stat-label">Products Built</div>
         </div>
         <div class="hero-stat">
@@ -890,7 +890,7 @@
             <div class="hintro">
                 <div class="sec-label"><span class="n">01</span> Featured Projects</div>
                 <h2 class="sec-title" data-title>Things I've built</h2>
-                <p style="margin-top:1rem;font-size:.95rem;max-width:340px;">Three products, built end to end. Scroll to walk through them — click any card for the full case study.</p>
+                <p style="margin-top:1rem;font-size:.95rem;max-width:340px;">Four products, built end to end. Scroll to walk through them — click any card for the full case study.</p>
                 <span class="hintro-hint">Keep scrolling <i class="ph ph-arrow-right"></i></span>
             </div>
 
@@ -943,6 +943,24 @@
                     <span class="hcard-cta">Open case study <i class="ph ph-arrow-up-right"></i></span>
                 </div>
                 <div class="hcard-visual"><img src="./banner_audit_bot.png" alt="Social Media Audit Bot" loading="lazy" /></div>
+            </div>
+
+            <div class="hcard" onclick="showProject('project-trades2')">
+                <div class="hcard-num">04</div>
+                <div class="hcard-info">
+                    <span class="p-status p-live">Live — Forward Testing</span>
+                    <h3 class="hcard-title">Trades2 — Quant Trading Lab</h3>
+                    <p class="hcard-desc">Algorithmic trading systems built on an anti-overfitting validation protocol: pre-registered hypotheses, cross-universe validation, Monte Carlo testing and automated execution bots against a broker API. 2 survivors out of 9 strategy families.</p>
+                    <div class="hcard-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Backtesting</span>
+                        <span class="tech-tag">Monte Carlo</span>
+                        <span class="tech-tag">Broker API</span>
+                        <span class="tech-tag">Statistics</span>
+                    </div>
+                    <span class="hcard-cta">Open case study <i class="ph ph-arrow-up-right"></i></span>
+                </div>
+                <div class="hcard-visual"><img src="./banner_trades2.svg" alt="Trades2 — Quant Trading Lab" loading="lazy" /></div>
             </div>
         </div>
     </div>
@@ -1382,6 +1400,64 @@
         </div>
     </div>
 
+    <!-- Trades2 -->
+    <div id="project-trades2" class="project-detail-container" style="display:none;">
+        <a onclick="hideProject()" class="back-btn"><i class="ph ph-arrow-left"></i> Back to Projects</a>
+        <div class="detail-header">
+            <span class="p-status p-live">Live — Forward Testing</span>
+            <h1 class="detail-title">Trades2 — Quant Trading Lab</h1>
+            <p class="detail-subtitle">Algorithmic trading systems with an anti-overfitting validation protocol</p>
+        </div>
+        <div class="detail-hero"><img src="./banner_trades2.svg" alt="Trades2 — Quant Trading Lab" /></div>
+        <div class="detail-section">
+            <h3><i class="ph ph-info"></i> Overview</h3>
+            <p class="detail-text">Most "profitable" backtests are statistical mirages without knowing it. Trades2 is a personal research project that built a <strong>validation protocol designed to kill those mirages</strong> — only what survives the full protocol ever reaches execution with money (for now, simulated).</p>
+            <p class="detail-text">The study covers 7 years of market data (2019–2026), 180+ assets across US and European equities plus crypto, and tens of millions of price bars. Developed in collaboration with Claude (Anthropic) as a research, engineering and documentation copilot — direction, judgement and decisions by the author.</p>
+        </div>
+        <div class="detail-section">
+            <h3><i class="ph ph-funnel"></i> The Validation Protocol</h3>
+            <p class="detail-text">Every candidate strategy goes through the same funnel, defined <em>before</em> looking at any results:</p>
+            <div class="features-grid">
+                <div class="feature-card"><i class="ph ph-file-text"></i><h4>Pre-registered Hypothesis</h4><p>Economic mechanism, falsifiable predictions and rejection criteria written down before the first number.</p></div>
+                <div class="feature-card"><i class="ph ph-arrows-left-right"></i><h4>Cross-Universe Validation</h4><p>Designed on asset group A, required to work on an untouched twin group B, then on a third universe downloaded on purpose.</p></div>
+                <div class="feature-card"><i class="ph ph-eye"></i><h4>One-Look Temporal Judge</h4><p>The most recent data segment is consulted exactly once, at the very end — looking at it twice invalidates it.</p></div>
+                <div class="feature-card"><i class="ph ph-dice-five"></i><h4>Monte Carlo</h4><p>Thousands of resamples to separate skill from luck — including a custom variant for compounding strategies.</p></div>
+                <div class="feature-card"><i class="ph ph-warning-octagon"></i><h4>Survivorship Audit</h4><p>Re-tested after adding companies that actually went bankrupt to the universe — 2023 fallen banks included.</p></div>
+                <div class="feature-card"><i class="ph ph-clock-countdown"></i><h4>Forward Test</h4><p>Nothing counts as validated until it runs for months in real time, automated on a broker's simulated account.</p></div>
+            </div>
+        </div>
+        <div class="detail-section">
+            <h3><i class="ph ph-chart-line-up"></i> Results — 2 Survivors out of 9 Families</h3>
+            <div class="tech-stack-large">
+                <div class="tech-item"><div class="tech-item-name">System 1 — US Equity Swing</div><div class="tech-item-desc">Buys pullbacks within uptrends over a multi-day horizon, with a market-regime filter. Backtest 2021–2026 (friction included): CAGR ~21%, profit factor 1.25, max drawdown ~-34%. Passed 3 universes + the temporal judge; Monte Carlo probability of loss ~1%. Now in automated forward test.</div></div>
+                <div class="tech-item"><div class="tech-item-name">System 2 — Crypto Trend</div><div class="tech-item-desc">Buys strength breakouts 24/7, with a regime switch that turns the bot off during crypto winters. Backtest: CAGR ~60%, profit factor 1.85, max drawdown ~-29%. The twin universe performed better than the design one; Monte Carlo probability of loss ~0%. Now in automated forward test.</div></div>
+            </div>
+            <p class="detail-text" style="color:#9aa0ae;font-style:italic;margin-top:1rem;">Historical simulation figures with pessimistic costs — not real returns, nor a promise of future returns. Drawdown is part of the price.</p>
+        </div>
+        <div class="detail-section">
+            <h3><i class="ph ph-x-circle"></i> Hypotheses Buried with Data</h3>
+            <p class="detail-text">The invisible work that gives value to the rest. Intraday trading (3 systems) died mathematically: a study on 69,000 observations showed the maximum signal available within the day is smaller than the cost of trading. Short selling (9 variants across 3 generations) was negative across the board — in the universe studied, weakness bounces, so selling dips equals buying squeezes. Momentum rotation on dividend stocks lost to its own passive equal-weight basket. And a system with spectacular design-group metrics (+9.9% per trade) turned out to be a statistical artifact that collapsed in both control universes — exactly what the protocol exists for.</p>
+            <p class="detail-text">Along the way, 7 methodology bugs were hunted down: results selected alphabetically instead of by date, standard Monte Carlo applied to compounded series ("impossible" -195% drawdowns), inflated CAGR denominators (caught through external review with another AI model), survivorship bias quantified at -6.5% instead of assumed, and paper leverage no real account would allow (Reg-T legal limit) with its hidden margin cost estimated.</p>
+        </div>
+        <div class="detail-section">
+            <h3><i class="ph ph-code-block"></i> Infrastructure</h3>
+            <div class="tech-stack-large">
+                <div class="tech-item"><div class="tech-item-name">Python Backtesting Framework</div><div class="tech-item-desc">Custom-built: pessimistic friction, look-ahead prevention, portfolio simulation, metrics (PF, CAGR, drawdown, deflated Sharpe).</div></div>
+                <div class="tech-item"><div class="tech-item-name">Monte Carlo Suite</div><div class="tech-item-desc">Bootstrap, permutation, drop and stress tests with charts — plus the custom compounding variant.</div></div>
+                <div class="tech-item"><div class="tech-item-name">Autonomous Execution Bots</div><div class="tech-item-desc">Run against a broker's REST API (simulated account): scheduled orders, broker-persisted stops, state reconciliation, unattended scheduling, portable across Windows/macOS.</div></div>
+                <div class="tech-item"><div class="tech-item-name">Documentation</div><div class="tech-item-desc">12+ technical reports (PDF/markdown) with a dated decision log — every change to every system has a date, a reason and a result.</div></div>
+            </div>
+        </div>
+        <div class="detail-section">
+            <h3><i class="ph ph-lightbulb"></i> Lessons Learned</h3>
+            <p class="detail-text">Friction and cost matter more than signal — measure them first. If you don't pre-register the hypothesis, the backtest will tell you what you want to hear. Validation on virgin data isn't optional: it is <strong>the</strong> test. Losses arrive in clusters (regimes), and statistical medians underestimate the real pain. Burying 7 ideas with data is worth more than falling in love with 1 without it.</p>
+            <p class="detail-text" style="color:#9aa0ae;font-style:italic;">Personal research project for educational purposes — nothing here constitutes financial advice. Method and parameters are not public; full detail available on request.</p>
+        </div>
+        <div class="detail-actions">
+            <a href="mailto:gonzalo.rcarrato@gmail.com?subject=Trades2%20%E2%80%94%20Request%20for%20details" class="btn btn-primary">Request Full Details <i class="ph ph-envelope-simple"></i></a>
+        </div>
+    </div>
+
 </div>
 </main>
 
@@ -1479,6 +1555,7 @@
     }
 
     /* ── Preloader + hero intro ── */
+    let countersRun = false;
     const preloader = document.getElementById('preloader');
     const heroChars = [];
     document.querySelectorAll('[data-split]').forEach(el => heroChars.push(...splitChars(el)));
@@ -1526,7 +1603,6 @@
     }
 
     /* ── Counters ── */
-    let countersRun = false;
     function runCounters() {
         if (countersRun) return;
         countersRun = true;
