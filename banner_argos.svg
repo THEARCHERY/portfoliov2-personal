@@ -1,60 +1,76 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="'JetBrains Mono', ui-monospace, monospace">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="Archivo, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <defs>
-    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#6366f1"/>
-      <stop offset="1" stop-color="#8b5cf6"/>
-    </linearGradient>
-    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#6366f1" stop-opacity=".30"/>
-      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
-    </linearGradient>
-    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
-      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity=".05"/>
-    </pattern>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="7" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.5"/></feComponentTransfer>
+    </filter>
+    <filter id="stain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.0055 0.009" numOctaves="6" seed="29" result="t"/>
+      <feColorMatrix in="t" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 0.5"/></feComponentTransfer>
+    </filter>
+    <filter id="vein" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.004 0.026" numOctaves="5" seed="41" result="t"/>
+      <feColorMatrix in="t" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 0.3"/></feComponentTransfer>
+    </filter>
+    <filter id="fracture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="4" seed="3" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <clipPath id="frame"><rect width="1200" height="800"/></clipPath>
   </defs>
 
-  <rect width="1200" height="800" fill="#0e0f15"/>
-  <rect width="1200" height="800" fill="url(#dots)"/>
+  <g clip-path="url(#frame)">
+    <!-- pine ground -->
+    <rect width="1200" height="800" fill="#1c3a2e"/>
+    <!-- stained emerald: foxing in the dark, malachite banding across it -->
+    <rect width="1200" height="800" filter="url(#stain)" fill="#0d1c16" opacity=".9"/>
+    <rect width="1200" height="800" filter="url(#vein)" fill="#3c6353" opacity=".55"/>
 
-  <!-- horizontal grid -->
-  <g stroke="#262833" stroke-width="1">
-    <line x1="0" y1="140" x2="1200" y2="140"/>
-    <line x1="0" y1="300" x2="1200" y2="300"/>
-    <line x1="0" y1="460" x2="1200" y2="460"/>
-    <line x1="0" y1="620" x2="1200" y2="620"/>
-  </g>
-
-  <!-- Monte Carlo fan (faint resampled paths) -->
-  <g fill="none" stroke-width="2" opacity=".16">
-    <path d="M-20,700 C240,660 380,690 520,620 C660,550 800,590 940,490 C1060,420 1140,410 1220,380" stroke="#8b5cf6"/>
-    <path d="M-20,700 C240,680 380,620 520,650 C660,680 800,530 940,540 C1060,545 1140,480 1220,460" stroke="#8b5cf6"/>
-    <path d="M-20,700 C240,640 380,660 520,580 C660,500 800,540 940,440 C1060,370 1140,380 1220,330" stroke="#6366f1"/>
-    <path d="M-20,700 C240,670 380,710 520,670 C660,630 800,660 940,580 C1060,520 1140,530 1220,490" stroke="#6366f1"/>
-  </g>
-
-  <!-- main equity curve with drawdown -->
-  <path d="M-20,700 C200,670 300,680 400,630 C480,590 540,650 620,605 C720,550 800,570 880,480 C980,395 1090,390 1220,295 L1220,810 L-20,810 Z" fill="url(#area)"/>
-  <path d="M-20,700 C200,670 300,680 400,630 C480,590 540,650 620,605 C720,550 800,570 880,480 C980,395 1090,390 1220,295" fill="none" stroke="url(#grad)" stroke-width="5" stroke-linecap="round"/>
-
-  <!-- centered title block (safe zone for cover-cropping) -->
-  <g text-anchor="middle">
-    <text x="600" y="330" fill="#f4f5fa" font-size="72" font-weight="700" letter-spacing="10">ARGOS</text>
-    <text x="600" y="378" fill="#8b90a0" font-size="20" letter-spacing="6">ANTI-OVERFITTING VALIDATION</text>
-
-    <!-- protocol chips -->
-    <g font-size="16" letter-spacing="2">
-      <rect x="404" y="418" width="180" height="44" rx="22" fill="#16171f" stroke="#262833"/>
-      <text x="494" y="446" fill="#a5b0ff">3 UNIVERSES</text>
-
-      <rect x="600" y="418" width="196" height="44" rx="22" fill="#16171f" stroke="#262833"/>
-      <text x="698" y="446" fill="#c4adff">MONTE CARLO</text>
+    <!-- registration linework -->
+    <g stroke="#3c6353" stroke-width="1" opacity=".7">
+      <line x1="0" y1="150" x2="1200" y2="150"/>
+      <line x1="0" y1="650" x2="1200" y2="650"/>
+      <line x1="96" y1="0" x2="96" y2="800"/>
     </g>
-    <g font-size="16" letter-spacing="2">
-      <rect x="454" y="478" width="292" height="44" rx="22" fill="#16171f" stroke="#262833"/>
-      <circle cx="486" cy="500" r="6" fill="#10b981"/>
-      <text x="622" y="506" fill="#5fe5b8">FORWARD TEST · LIVE</text>
+    <g stroke="#c08a2e" stroke-width="1.5" opacity=".55">
+      <path d="M1104 122 h48 M1128 98 v48"/>
+      <path d="M96 650 h36 M96 632 v36"/>
     </g>
 
-    <text x="600" y="572" fill="#8b90a0" font-size="17" letter-spacing="2">7Y DATA · 180+ ASSETS · 2 SURVIVORS / 9</text>
+    <!-- equity curve, laid as leaf -->
+    <path d="M-20,706 C200,676 300,686 400,636 C480,596 540,656 620,611 C720,556 800,576 880,486 C980,401 1090,396 1220,301 L1220,812 L-20,812 Z"
+          fill="#c08a2e" opacity=".13"/>
+    <g filter="url(#fracture)">
+      <path d="M-20,700 C200,670 300,680 400,630 C480,590 540,650 620,605 C720,550 800,570 880,480 C980,395 1090,390 1220,295"
+            fill="none" stroke="#c08a2e" stroke-width="9" stroke-linecap="round"/>
+    </g>
+    <path d="M-20,700 C200,670 300,680 400,630 C480,590 540,650 620,605 C720,550 800,570 880,480 C980,395 1090,390 1220,295"
+          fill="none" stroke="#e0aa4e" stroke-width="2.5" stroke-linecap="round" opacity=".9"/>
+
+    <!-- resampled paths, buried under the leaf -->
+    <g fill="none" stroke="#3c6353" stroke-width="2" opacity=".5">
+      <path d="M-20,700 C240,660 380,690 520,620 C660,550 800,590 940,490 C1060,420 1140,410 1220,380"/>
+      <path d="M-20,700 C240,680 380,620 520,650 C660,680 800,530 940,540 C1060,545 1140,480 1220,460"/>
+      <path d="M-20,700 C240,670 380,710 520,670 C660,630 800,660 940,580 C1060,520 1140,530 1220,490"/>
+    </g>
+
+    <!-- title, ranged left off the vertical rule -->
+    <g>
+      <text x="140" y="300" fill="#f5f2ea" font-size="132" font-weight="800" letter-spacing="-6">ARGOS</text>
+      <rect x="140" y="330" width="118" height="3" fill="#c08a2e"/>
+      <text x="140" y="382" fill="#c3d3ca" font-size="26" font-weight="600" letter-spacing="4">ANTI-OVERFITTING VALIDATION</text>
+      <g font-size="18" font-weight="600" letter-spacing="3" fill="#a8bcb2">
+        <text x="140" y="452">3 UNIVERSES</text>
+        <text x="330" y="452">MONTE CARLO</text>
+        <text x="540" y="452">FORWARD TEST</text>
+      </g>
+      <text x="140" y="712" fill="#c3d3ca" font-size="20" font-weight="600" letter-spacing="3">7Y DATA &#183; 180+ ASSETS &#183; 2 SURVIVORS OF 9</text>
+    </g>
+
+    <!-- paper grain over everything -->
+    <rect width="1200" height="800" filter="url(#grain)" opacity=".22" style="mix-blend-mode:overlay"/>
   </g>
 </svg>
