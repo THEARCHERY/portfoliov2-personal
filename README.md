@@ -1,37 +1,51 @@
-# Gonzalo Maria Romero Carrato — Personal Portfolio
+# Gonzalo María Romero Carrato — Personal Portfolio
 
 <div align="center">
 
-### 👉 [**Click here to view the live site**](https://thearchery.github.io/portfoliov2-personal/) 👈
+### 👉 [**Ver el sitio en vivo**](https://thearchery.github.io/portfoliov2-personal/) 👈
 
-*Business Analyst & Founder — building data-driven products at the intersection of finance and AI.*
+*Business Analyst & founder — sistemas de datos donde las finanzas se encuentran con la IA.*
 </div>
 
 ---
 
 ## ✨ About
-Personal portfolio website with a modern minimal design (Linear/Stripe-inspired): clean light UI with indigo→violet accents, smooth scrolling, GSAP-powered animations, a horizontal-scroll project showcase, an interactive experience accordion and a live "daily pipeline" terminal card.
 
-## 🚀 Featured Projects
+Personal portfolio built as **“El Informe”**: an editorial, report-like design in Spanish. Dark *deep-nord* theme (with a light *blueprint* alternative), dithered halftone artwork rendered on `<canvas>`, and project cards that dissolve their pixelation on hover to reveal the summary.
+
+Every project opens a **full case study** — including what failed and why. That's the point of the whole thing: the buried hypotheses are documented next to the surviving ones.
+
+## 🚀 Projects
 
 | Project | Status | Description |
 |---|---|---|
-| **The Morning Club** | 🟢 Live — Private Beta | AI-driven financial news summaries, sentiment analysis & daily metrics |
-| **Astralis** | ⚪ Discontinued | Multi-model AI assistant with voice synthesis & phone-call automation |
-| **Audit Bot** | 🟢 Active — Fiverr | Automated social media account analyzer with actionable PDF reports |
+| **Argos** | 🟢 Live — forward test | Algorithmic trading under an anti-overfitting protocol: pre-registered hypotheses, three-universe validation, Monte Carlo and automated execution against a broker API. Two survivors out of nine strategy families. |
+| **Audit Bot** | 🟢 Active — Fiverr service | Agent that audits social accounts against successful profiles in their niche and returns actionable PDF reports. |
+| **The Morning Club** | ⚪ Closed · 2025 — 2026 | AI financial-news platform: aggregation, summaries, sentiment analysis and daily metrics. 250+ early-access users and a 3,000-person waitlist; closed on a cost-benefit analysis. |
+| **Astralis** | ⚪ Retired | Multi-model conversational assistant with voice synthesis, calendar/email management and phone-call automation. |
+
+A fifth report, **Hipótesis enterradas con datos**, collects the discarded strategies and the seven methodology bugs caught along the way.
 
 ## 🛠️ Tech
-- Single-page static site: `index.html` (HTML + CSS + vanilla JS)
-- [GSAP + ScrollTrigger](https://gsap.com/) — scroll animations & horizontal project gallery
-- [Lenis](https://lenis.darkroom.engineering/) — smooth scrolling
-- [Phosphor Icons](https://phosphoricons.com/) · Google Fonts (Inter, JetBrains Mono)
-- Deployed with **GitHub Pages** via GitHub Actions
+
+- **Single self-contained file:** `index.html` — HTML + CSS + vanilla JS, no build step and no dependencies
+- All imagery embedded as base64; halftone/dither artwork generated at runtime on `<canvas>`
+- Two themes (`deep-nord` / `blueprint`) switchable from the floating button
+- Google Fonts: Bebas Neue, Fraunces, Hanken Grotesk, Martian Mono, Geist, Doto
+- Deployed with **GitHub Pages**
+
+## 📄 CV
+
+[`CV-Gonzalo-Romero-Carrato.pdf`](CV-Gonzalo-Romero-Carrato.pdf) — linked from the hero and the contact section.
 
 ## 📬 Contact
+
 - **Email:** gonzalo.rcarrato@gmail.com
-- **Location:** Madrid, Spain — open to remote
+- **LinkedIn:** [gonzalo-maría-romero-carrato](https://www.linkedin.com/in/gonzalo-mar%C3%ADa-romero-carrato-7b3312369/)
+- **GitHub:** [@THEARCHERY](https://github.com/thearchery)
+- **Location:** Madrid, Spain — open to remote & relocation
 
 ---
 <div align="center">
-© Gonzalo Maria Romero Carrato · Finance × AI × Automation
+© Gonzalo María Romero Carrato · Finanzas × IA × Automatización
 </div>
