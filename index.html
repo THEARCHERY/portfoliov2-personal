@@ -541,6 +541,94 @@ body.detail .rail{display:none}
 .metrics .v{font-family:var(--f-doto);font-weight:700;font-size:22px;line-height:1;color:var(--ink)}
 .caso-body .note{font-family:var(--f-sans);font-size:13.5px;line-height:1.6;color:var(--ink-3);
   border-left:2px solid var(--hairline-2);padding-left:14px;margin:16px 0}
+/* informes: tablas, listas numeradas, citas, fichas de familia y cronología */
+/* las columnas del grid deben poder encoger: si no, el min-width de las tablas
+   desborda el ancho del móvil en vez de hacer scroll dentro de .tbl */
+.caso-grid > *{min-width:0}
+.caso-body h3{font-family:var(--f-sans);font-weight:600;font-size:16.5px;color:var(--ink);
+  margin:26px 0 6px}
+.caso-body .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:1px;
+  background:var(--hairline);border:1px solid var(--hairline);margin:4px 0 20px}
+.caso-body .stats > div{background:var(--card);padding:14px 14px 12px}
+.caso-body .stats .n{font-family:var(--f-doto);font-weight:700;font-size:26px;line-height:1;color:var(--ink)}
+.caso-body .stats .n.k{color:var(--warn)}
+.caso-body .stats .n.g{color:var(--green)}
+.caso-body .stats .l{font-family:var(--f-mono);font-size:9px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-3);margin-top:7px;line-height:1.5}
+.caso-body ol{display:flex;flex-direction:column;gap:10px;max-width:720px;margin:4px 0 14px;
+  counter-reset:n;padding:0;list-style:none}
+.caso-body ol > li{position:relative;padding-left:30px;counter-increment:n;
+  font-family:var(--f-body);font-size:15.5px;line-height:1.55;
+  color:color-mix(in oklab, var(--ink) 82%, var(--ink-2))}
+.caso-body ol > li::before{content:counter(n,decimal-leading-zero);position:absolute;left:0;top:2px;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;color:var(--accent)}
+.caso-body ol > li b{color:var(--ink);font-weight:600}
+.caso-body blockquote{margin:20px 0;padding:2px 0 2px 18px;border-left:2px solid var(--accent);
+  font-family:var(--f-serif);font-style:italic;font-size:18px;line-height:1.5;color:var(--ink);
+  max-width:640px}
+.caso-body blockquote .who{display:block;margin-top:10px;font-family:var(--f-mono);font-style:normal;
+  font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+.caso-body .tbl{overflow-x:auto;border:1px solid var(--hairline);border-radius:2px;margin:8px 0 16px;
+  background:var(--card);box-shadow:var(--card-shadow)}
+.caso-body .tbl table{border-collapse:collapse;width:100%;min-width:520px;
+  font-family:var(--f-sans);font-size:14px}
+.caso-body .tbl th{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-3);font-weight:400;text-align:left;
+  padding:11px 14px;border-bottom:1px solid var(--hairline);vertical-align:bottom}
+.caso-body .tbl td{padding:10px 14px;border-bottom:1px solid var(--hairline);vertical-align:top;
+  color:color-mix(in oklab, var(--ink) 82%, var(--ink-2));font-variant-numeric:tabular-nums;
+  line-height:1.5}
+.caso-body .tbl tr:last-child td{border-bottom:none}
+.caso-body .tbl td b{color:var(--ink);font-weight:600}
+.caso-body .tbl .num{text-align:right;white-space:nowrap}
+.caso-body .neg{color:var(--warn)}
+.caso-body .pos{color:var(--green)}
+/* en tema claro, los tokens de acento se quedan por debajo de AA sobre texto pequeño */
+html[data-palette="blueprint"] .caso-body .neg,
+html[data-palette="blueprint"] .caso-body .stamp.kill,
+html[data-palette="blueprint"] .caso-body .grave b,
+html[data-palette="blueprint"] .caso-body .entry .bn,
+html[data-palette="blueprint"] .caso-body .entry .cause b{color:color-mix(in oklab, var(--warn) 74%, #000)}
+html[data-palette="blueprint"] .caso-body .pos,
+html[data-palette="blueprint"] .caso-body .stamp.run,
+html[data-palette="blueprint"] .caso-body .entry .cause b.ok{color:color-mix(in oklab, var(--green) 64%, #000)}
+.caso-body .grave{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3);margin:-4px 0 16px}
+.caso-body .grave b{color:var(--warn);font-weight:400}
+.caso-body .stamp{display:inline-block;font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;
+  text-transform:uppercase;padding:3px 8px;border-radius:2px;white-space:nowrap;
+  border:1px solid currentColor;line-height:1.4}
+.caso-body .stamp.kill{color:var(--warn)}
+.caso-body .stamp.run{color:var(--green)}
+.caso-body .stamp.pause{color:var(--ink-3)}
+.caso-body .entry{background:var(--card);border:1px solid var(--hairline);border-radius:2px;
+  padding:18px 20px 14px;margin:12px 0;box-shadow:var(--card-shadow)}
+.caso-body .entry .head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin-bottom:2px}
+.caso-body .entry .name{font-family:var(--f-sans);font-weight:600;font-size:16px;color:var(--ink)}
+.caso-body .entry .bn{font-family:var(--f-doto);font-weight:700;font-size:20px;color:var(--warn);
+  line-height:1}
+.caso-body .entry .dates{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3)}
+.caso-body .entry p{font-size:14.5px;line-height:1.62;margin-bottom:10px}
+.caso-body .entry p:last-of-type{margin-bottom:0}
+.caso-body .entry .cause{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;
+  color:var(--ink-3);border-top:1px dashed var(--hairline-2);margin-top:14px;padding-top:11px;
+  line-height:1.7}
+.caso-body .entry .cause b{color:var(--warn);font-weight:400}
+.caso-body .entry .cause b.ok{color:var(--green)}
+.caso-body .tline{display:flex;flex-direction:column;margin:8px 0 16px;max-width:760px}
+.caso-body .tline .row{display:grid;grid-template-columns:112px 1fr;gap:16px;padding:10px 0;
+  border-bottom:1px dashed var(--hairline)}
+.caso-body .tline .row:last-child{border-bottom:none}
+.caso-body .tline .d{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);padding-top:4px}
+.caso-body .tline .e{font-family:var(--f-sans);font-size:14.5px;line-height:1.55;
+  color:color-mix(in oklab, var(--ink) 82%, var(--ink-2))}
+.caso-body .tline .e b{color:var(--ink);font-weight:600}
+@media (max-width:640px){
+  .caso-body .tline .row{grid-template-columns:1fr;gap:2px}
+  .caso-body .stats{grid-template-columns:repeat(2,1fr)}
+}
 .figs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 10px}
 .fig{margin:0}
 .fig-media{position:relative;aspect-ratio:799/1974;overflow:hidden;border:1px solid var(--hairline);
@@ -971,7 +1059,7 @@ body.detail .rail{display:none}
           <div>
             <p class="meta">Argos · Notas de método</p>
             <h3>Hipótesis enterradas con datos</h3>
-            <p class="desc">Intradía muerto por matemáticas, nueve variantes de venta en corto negativas, una rotación de momentum que perdió contra su propia cesta y siete bugs de metodología cazados por el camino.</p>
+            <p class="desc">Intradía muerto por aritmética, veinticinco mediciones de venta en corto sin una sola aprobada, una rotación que perdió contra su propia cesta y siete bugs de metodología cazados por el camino.</p>
             <div class="chips"><span class="chip">Backtesting</span><span class="chip">Sesgos</span><span class="chip">Lecciones</span></div>
           </div>
         </a>
@@ -1051,72 +1139,192 @@ body.detail .rail{display:none}
       <div class="caso-grid">
         <div class="caso-body">
           <h2>Resumen</h2>
-          <p>La mayoría de los backtests que parecen rentables son espejismos estadísticos, y quien los ejecuta rara vez lo sabe. Argos —por Argos Panoptes, el vigilante de cien ojos de la mitología griega— es un proyecto de investigación personal construido alrededor de una idea: un <b>protocolo de validación diseñado para matar esos espejismos</b>. Nada se le escapa, y solo lo que sobrevive al protocolo completo llega a ejecutarse con dinero, que por ahora es simulado.</p>
-          <p>El estudio cubre siete años de datos de mercado, de 2019 a 2026, más de 180 activos entre acciones de EE.&nbsp;UU. y Europa y cripto, y decenas de millones de barras de precio. Desarrollado con Claude como copiloto de investigación, ingeniería y documentación; la dirección, el criterio y las decisiones son del autor.</p>
+          <p>Cualquiera con datos históricos y un bucle <b>for</b> puede producir una curva de capital ascendente. El problema no es técnico, es epistemológico: si pruebas suficientes combinaciones de reglas sobre los mismos datos, <b>alguna funcionará por puro azar</b> — y será indistinguible de una que funcione de verdad, hasta que le pongas dinero encima.</p>
+          <p>La respuesta habitual del sector es optimizar más fuerte. La respuesta de este proyecto fue la contraria: construir un protocolo cuyo único trabajo es <b>destruir estrategias</b>, y comprometerse por escrito con sus veredictos antes de conocerlos. Falsación antes que optimización. Cada familia entra con una hipótesis firmada, criterios de muerte prerregistrados y un registro de cambios fechado. Si muere, se publica con sus números.</p>
+          <div class="stats">
+            <div><p class="n">9</p><p class="l">familias evaluadas</p></div>
+            <div><p class="n k">7</p><p class="l">enterradas con datos</p></div>
+            <div><p class="n g">2</p><p class="l">en forward test</p></div>
+            <div><p class="n">7</p><p class="l">años de mercado</p></div>
+            <div><p class="n">0</p><p class="l">señales perdidas</p></div>
+          </div>
+          <p class="note">El cementerio es el activo. Siete familias enterradas con sus datos valen más que una superviviente sin contexto: son la prueba de que las dos que quedaron no salieron de una búsqueda infinita hasta encontrar algo bonito, sino de un embudo que mataba casi todo lo que entraba.</p>
+          <p>El estudio cubre siete años de mercado (2019–2026) y más de 180 activos entre acciones de EE.&nbsp;UU. y Europa y criptomonedas. Deliberadamente <b>no</b> contiene parámetros, umbrales, ventanas de indicadores, listas de activos ni reglas replicables: el detalle operativo permanece privado. Lo que se publica es lo que casi nadie publica — el proceso y los fracasos. Desarrollado con Claude como copiloto de investigación, ingeniería y documentación; la dirección, el criterio y las decisiones son del autor.</p>
 
-          <h2>El protocolo de validación</h2>
-          <p>Cada estrategia candidata pasa por el mismo embudo, definido <em>antes</em> de mirar ningún resultado.</p>
+          <h2>El embudo · seis puertas</h2>
+          <p>Todo candidato pasa por las mismas seis puertas, en el mismo orden. Ninguna se ajusta después de ver resultados; si un criterio resulta mal diseñado, se anota la lección y se aplica a la <em>siguiente</em> familia, nunca retroactivamente.</p>
           <div class="cells">
-            <div class="cell"><p class="k"><i>01</i>Hipótesis prerregistrada</p><p>Mecanismo económico, predicciones falsables y criterios de rechazo escritos antes del primer número.</p></div>
-            <div class="cell"><p class="k"><i>02</i>Validación cruzada de universos</p><p>Diseñada sobre el grupo de activos A, obligada a funcionar en un grupo gemelo B sin tocar, y después en un tercer universo descargado a propósito.</p></div>
-            <div class="cell"><p class="k"><i>03</i>Juez temporal de una sola mirada</p><p>El segmento de datos más reciente se consulta exactamente una vez, al final. Mirarlo dos veces lo invalida.</p></div>
-            <div class="cell"><p class="k"><i>04</i>Monte Carlo</p><p>Miles de remuestreos para separar habilidad de suerte, con una variante propia para estrategias con capitalización compuesta.</p></div>
-            <div class="cell"><p class="k"><i>05</i>Auditoría de supervivencia</p><p>Re-test tras añadir al universo empresas que quebraron de verdad, bancos caídos en 2023 incluidos.</p></div>
-            <div class="cell"><p class="k"><i>06</i>Forward test</p><p>Nada cuenta como validado hasta que corre meses en tiempo real, automatizado sobre la cuenta simulada de un bróker.</p></div>
+            <div class="cell"><p class="k"><i>01</i>Hipótesis prerregistrada</p><p>Antes del primer número existe un documento: qué desequilibrio se pretende explotar, qué predicciones falsables hace y qué resultado exacto la mataría. Las reglas se fijan «redondas», sin decimales que delaten un ajuste fino al pasado.</p></div>
+            <div class="cell"><p class="k"><i>02</i>Validación cruzada de universos</p><p>Se diseña sobre un grupo de activos (A) y se exige que funcione en un grupo gemelo jamás tocado (B), y después en un tercer universo (C) descargado ex profeso, con su criterio de aprobación registrado antes de la descarga. Un edge real viaja; un artefacto se queda en casa.</p></div>
+            <div class="cell"><p class="k"><i>03</i>Juez temporal de una sola mirada</p><p>El tramo más reciente de datos se reserva y se consulta <b>una única vez</b>, al final. Verlo dos veces lo invalida: el ojo humano no puede «desver» un resultado. Un juez consumido se marca como quemado y no vuelve a usarse, incluso cuando su veredicto incomoda.</p></div>
+            <div class="cell"><p class="k"><i>04</i>Monte Carlo</p><p>Miles de remuestreos —bootstrap, permutación de orden, eliminación aleatoria de operaciones, estrés de fricción— para separar habilidad de azar. Incluye una variante propia para estrategias con interés compuesto, tras descubrir que el método estándar produce resultados imposibles en ese caso.</p></div>
+            <div class="cell"><p class="k"><i>05</i>Auditoría de sesgo de supervivencia</p><p>La auditoría (nombre en clave <em>Caronte</em>) reconstruye una lista de empresas que un operador del pasado habría incluido y que luego quebraron o fueron deslistadas —bancos caídos en 2023 incluidos—, la declara antes de correr nada y re-ejecuta el sistema con ellas dentro. El peaje no se supone: se mide.</p></div>
+            <div class="cell"><p class="k"><i>06</i>Forward test</p><p>Nada se considera validado hasta correr meses en tiempo real, con ejecución automatizada contra la API de un bróker en cuenta simulada, criterios congelados por escrito antes del día cero y registro público de incidencias. El backtest propone; el calendario dispone.</p></div>
           </div>
 
-          <h2>Resultados: dos supervivientes de nueve familias</h2>
+          <h2>Las nueve familias</h2>
+          <p>Cada entrada indica dónde murió — porque no todas mueren en el mismo sitio, y eso también es información: un protocolo cuyas víctimas caen siempre en la misma puerta probablemente tiene las otras puertas pintadas en la pared.</p>
+          <div class="tbl"><table>
+            <thead><tr><th>Familia</th><th>Terreno</th><th>Puerta donde murió</th><th>Veredicto</th></tr></thead>
+            <tbody>
+              <tr><td><b>Hermes 2</b></td><td>Intradía, acciones USA</td><td>Juez temporal (holdout)</td><td><span class="stamp kill">Archivada</span></td></tr>
+              <tr><td><b>Hermes 3</b></td><td>Intradía, continuación</td><td>Backtest prerregistrado</td><td><span class="stamp kill">Archivada</span></td></tr>
+              <tr><td><b>Hermes 3.1</b></td><td>Intradía, reversión</td><td>Universos B y C</td><td><span class="stamp kill">Archivada</span></td></tr>
+              <tr><td><b>Hécate ×3</b></td><td>Venta en corto, 3 generaciones</td><td>Estudio de señal (9 mediciones)</td><td><span class="stamp kill">Archivada</span></td></tr>
+              <tr><td><b>Deméter</b></td><td>Rotación dividendos + momentum</td><td>Benchmark interno</td><td><span class="stamp kill">Archivada</span></td></tr>
+              <tr><td><b>Gea</b></td><td>Tendencia en ETFs de materias primas</td><td>Estudio + cartera A</td><td><span class="stamp kill">Archivada</span></td></tr>
+              <tr><td><b>Teseo</b></td><td>Challenges de prop firms</td><td>Valor esperado</td><td><span class="stamp kill">Archivada</span></td></tr>
+              <tr><td><b>Delfos</b></td><td>Selección de universo por conducta</td><td>Grupo de control</td><td><span class="stamp kill">Archivada</span></td></tr>
+              <tr><td><b>Éolo</b></td><td>Divisas (FX)</td><td>— (no llegó a correr)</td><td><span class="stamp pause">Pausada</span></td></tr>
+              <tr><td><b>Hermes 4</b></td><td>Swing multidía, acciones USA</td><td>Superó las cinco primeras</td><td><span class="stamp run">Forward test</span></td></tr>
+              <tr><td><b>Selene</b></td><td>Tendencia en cripto, 24/7</td><td>Diseño y gemelo sí; juez en rojo</td><td><span class="stamp run">Forward test</span></td></tr>
+            </tbody>
+          </table></div>
+          <p class="note">Nota de recuento: Hermes 2, 3 y 3.1 son iteraciones de una misma búsqueda pero cuentan como tres familias distintas (tres hipótesis prerregistradas, tres entierros); Éolo, pausada antes de medir nada, no cuenta entre las nueve evaluadas. Nueve evaluadas: siete enterradas, dos vivas.</p>
+
+          <div class="entry">
+            <div class="head"><span class="name">Hermes 2 · 3 · 3.1</span><span class="dates">jun – jul 2026</span><span class="stamp kill">Archivadas</span></div>
+            <p>Tres intentos sucesivos de operar dentro del día. El tercero es el más instructivo: un estudio de señal sobre el grupo de diseño encontró un candidato de reversión espectacular —<b>+9,9 % en unidades de volatilidad por evento</b>, positivo los cuatro años, robusto a valores atípicos. Implementado y validado bajo protocolo: factor de beneficio 1,36 en el grupo de diseño… <b>0,95 en el gemelo y 0,85 en el universo virgen</b>. Un artefacto del grupo de diseño, de libro. La puntilla la puso un panel propio de <b>69.258 ticker-días</b>: el ~72 % del retorno de las acciones ocurre con el mercado <em>cerrado</em>, la deriva intradía mediana es negativa, y el coste de operar supera a la mejor señal disponible. No fue mala suerte: fue aritmética.</p>
+            <div class="cause">Causa de muerte: <b>la señal máxima es menor que el peaje</b> · el candidato brillante no viajó a B ni a C</div>
+          </div>
+
+          <div class="entry">
+            <div class="head"><span class="name">Hécate (tres generaciones)</span><span class="dates">jul 2026 · las tres en un mismo día</span><span class="stamp kill">Archivada</span></div>
+            <p>La hermana bajista: ¿funciona el sistema ganador al revés — vender debilidad en vez de comprar fuerza? <b>Nueve mediciones independientes en tres generaciones</b> (técnicas, eventos, cobertura relativa, noticias, resultados empresariales) y un solo veredicto: el lado corto pierde o no es medible. El backtest documental de la mejor variante: factor de beneficio 0,72 con drawdown del −59 %. Las razones son estructurales — deriva alcista del mercado, squeezes que castigan la debilidad aparente, y transiciones de régimen que masacran al corto justo cuando el filtro aún dice «bajista». Una segunda ronda un mes después, con dieciséis hipótesis frescas y revisión adversarial, confirmó el entierro: cero supervivientes.</p>
+            <div class="cause">Causa de muerte: <b>la debilidad rebota</b> · vender caídas equivale a comprar squeezes</div>
+          </div>
+
+          <div class="entry">
+            <div class="head"><span class="name">Deméter</span><span class="dates">jul 2026</span><span class="stamp kill">Archivada</span></div>
+            <p>Rotación mensual sobre un centenar largo de acciones de dividendo, combinando calidad de reparto y momentum. Murió contra el benchmark más humillante posible: <b>la cesta equiponderada de su propio universo</b>, que rendía un 10,6 % anual sin regla alguna. La rotación «inteligente» quedó 4,3 puntos por año <em>por debajo</em> de no hacer nada. El hallazgo colateral — que la cesta tonta era excelente — vale más que la estrategia que se pretendía construir.</p>
+            <div class="cause">Causa de muerte: <b>perdió contra su propia materia prima</b> · el benchmark interno va primero</div>
+          </div>
+
+          <div class="entry">
+            <div class="head"><span class="name">Gea</span><span class="dates">jul 2026</span><span class="stamp kill">Archivada</span></div>
+            <p>Seguimiento de tendencia sobre quince ETFs de materias primas. Falló en el estudio y en la cartera de diseño. El matiz importa: el resultado <b>no refuta</b> el trend-following en materias primas — los profesionales lo operan con futuros, en decenas de mercados y en ambas direcciones. Refuta la aproximación minorista con ETFs long-only, que sangra el contango del subyacente. El juez temporal quedó virgen, por si algún día se reabre con el instrumento correcto.</p>
+            <div class="cause">Causa de muerte: <b>el instrumento equivocado</b> · el vehículo importa tanto como la señal</div>
+          </div>
+
+          <div class="entry">
+            <div class="head"><span class="name">Teseo</span><span class="dates">jul 2026</span><span class="stamp kill">Archivada</span></div>
+            <p>Un bot para superar «challenges» de prop firms. Aquí la diana no es el retorno sino el <b>valor esperado por intento</b>, con las reglas del laberinto: objetivo +10 %, suelo −10 %, límite diario −5 % y cuota de entrada. Las señales pasaron la validación (el gemelo salió <em>mejor</em> que el diseño), pero la aritmética del challenge no: en el mejor punto del mapa de riesgo, la probabilidad de llegar a cuenta financiada era del 12,5 % y el valor esperado, <b>−334 € por intento</b>. Un edge honesto de unos pocos puntos al año es, matemáticamente, una máquina de quemar cuotas bajo esas reglas: haría falta un edge 5–10 veces mayor. El juez quedó virgen — nunca hizo falta abrirlo.</p>
+            <div class="cause">Causa de muerte: <b>EV negativo por diseño del juego</b> · optimizar P(pasar) destruía el EV</div>
+          </div>
+
+          <div class="entry">
+            <div class="head"><span class="name">Delfos</span><span class="dates">jul 2026</span><span class="stamp kill">Archivada</span></div>
+            <p>La pregunta incómoda: los universos de los sistemas vivos se eligieron a mano — ¿es ese «ojo humano» un edge capturable con criterios medibles de conducta de precio y volumen? Respuesta, tras enfrentar la selección conductual a un <b>grupo de control aleatorio de valores líquidos</b>: no. La diferencia (+0,05 de factor de beneficio) quedó por debajo del umbral prerregistrado y dentro del ruido. El hallazgo lateral fue el importante: hasta el control aleatorio funcionaba con las reglas congeladas del sistema ganador — <b>el edge está en las reglas y el régimen, no en la selección de valores</b>. Tercera evidencia independiente del mismo hecho.</p>
+            <div class="cause">Causa de muerte: <b>no superó al azar líquido</b> · kill aplicado sin tocar una feature</div>
+          </div>
+
+          <div class="entry">
+            <div class="head"><span class="name">Éolo</span><span class="dates">jul 2026</span><span class="stamp pause">Pausada — sin correr</span></div>
+            <p>Divisas. Pausada <em>antes</em> de medir nada, y esa es exactamente la historia: en FX multidía, el coste de financiación nocturno (swap) es del mismo orden que el movimiento del precio, es específico de cada bróker, y no estaba disponible como dato histórico. Un backtest sin swaps puede convertir una estrategia perdedora en ganadora en papel — y el único edge FX robustamente documentado es precisamente el carry, que sin ese dato ni siquiera puede testearse. <b>Negarse a backtestear a ciegas también es el método.</b></p>
+            <div class="cause">Estado: <b class="ok">en cuarentena</b> · se reabre si algún día hay datos honestos de swap</div>
+          </div>
+
+          <h2>Los dos supervivientes</h2>
           <div class="sys">
             <div class="panel">
               <b class="tk tl"></b><b class="tk tr"></b><b class="tk bl"></b><b class="tk br"></b>
-              <h3>Sistema 1</h3>
-              <p class="sub">Swing · renta variable de EE.&nbsp;UU.</p>
-              <p>Compra retrocesos dentro de tendencias alcistas a horizonte de varios días, con un filtro de régimen de mercado.</p>
+              <h3>Hermes 4</h3>
+              <p class="sub">Swing multidía · acciones de EE.&nbsp;UU.</p>
+              <p>Compra retrocesos profundos —medidos en unidades de volatilidad de cada valor— dentro de tendencias alcistas confirmadas. Mantiene posiciones unos pocos días, con stop de desastre proporcional a la volatilidad, salida forzosa por calendario y un filtro de régimen que apaga las compras en mercados bajistas.</p>
               <div class="metrics">
                 <div><p class="k">CAGR</p><p class="v">≈ 21 %</p></div>
-                <div><p class="k">Profit factor</p><p class="v">1,25</p></div>
+                <div><p class="k">Factor de beneficio</p><p class="v">1,25</p></div>
                 <div><p class="k">Drawdown máx.</p><p class="v">≈ −34 %</p></div>
                 <div><p class="k">P(pérdida) · Monte Carlo</p><p class="v">≈ 1 %</p></div>
               </div>
-              <p>Backtest 2021–2026 con fricción incluida. Superó tres universos y el juez temporal. Hoy en forward test automatizado.</p>
+              <p>Backtest 2021–2026 con fricción pesimista, 706 operaciones. Tres universos en positivo, juez temporal aprobado a la primera y única mirada (267 operaciones, FB 1,19, +16,7 % anualizado) y auditoría de supervivencia superada: añadir 14 empresas realmente quebradas costó un −6,5 %, muy por debajo del umbral del 15 % fijado antes de correr.</p>
             </div>
             <div class="panel">
               <b class="tk tl"></b><b class="tk tr"></b><b class="tk bl"></b><b class="tk br"></b>
-              <h3>Sistema 2</h3>
-              <p class="sub">Tendencia · cripto</p>
-              <p>Compra rupturas de fuerza las 24 horas, con un interruptor de régimen que apaga el bot durante los inviernos cripto.</p>
+              <h3>Selene</h3>
+              <p class="sub">Tendencia · criptomonedas · 24/7</p>
+              <p>Compra rupturas de fuerza en un conjunto de criptomonedas líquidas declarado a priori, con doble confirmación de tendencia y salida por pérdida de una media corta. Long-flat: jamás corto. Su pieza central es un interruptor de régimen que <b>apaga el sistema entero</b> durante los inviernos cripto.</p>
               <div class="metrics">
                 <div><p class="k">CAGR</p><p class="v">≈ 60 %</p></div>
-                <div><p class="k">Profit factor</p><p class="v">1,85</p></div>
+                <div><p class="k">Factor de beneficio</p><p class="v">1,85</p></div>
                 <div><p class="k">Drawdown máx.</p><p class="v">≈ −29 %</p></div>
-                <div><p class="k">P(pérdida) · Monte Carlo</p><p class="v">≈ 0 %</p></div>
+                <div><p class="k">Gemelo vs diseño</p><p class="v">4,19 / 3,09</p></div>
               </div>
-              <p>El universo gemelo rindió mejor que el de diseño. Hoy en forward test automatizado.</p>
+              <p>Superviviente <em>con reservas</em>, declaradas antes del forward: el 55 % del beneficio del rango completo salía de un solo año (2021) y su juez temporal salió en rojo (FB 0,80 en 2025–2026). Ese juez quedó consumido con su veredicto en contra —con el agravante, reconocido, de que su ejecución se precipitó por un fallo de proceso— y no se re-optimiza.</p>
             </div>
           </div>
-          <p class="note">Cifras de simulación histórica con costes pesimistas. No son rentabilidades reales ni una promesa de rentabilidades futuras. El drawdown es parte del precio.</p>
+          <p><b>Naturaleza honesta de Hermes 4, re-etiquetada tras el estudio de señal:</b> el propio análisis del proyecto falsó el «timing» como fuente del alfa. Lo que gana no es predicción, es estructura — exposición larga a valores volátiles, solo en tendencia, con una cola de pérdidas truncada por el stop. Cosecha de tendencia con control de riesgo. En años bajistas <em>pierde</em> (2022 lo hizo), y eso está escrito en su ficha, no escondido.</p>
+          <p>Consecuencia asumida en Selene: no tiene hoy evidencia limpia fuera de muestra, y su único juez restante es el forward test. Si el régimen no da muestra suficiente a tiempo, el veredicto será «no evaluable» — que no es un aprobado, y así está escrito desde antes de conocer el resultado.</p>
+          <p class="note">Cifras de simulación histórica con costes pesimistas o de cuenta simulada. No son rentabilidades reales ni una promesa de rentabilidades futuras. El drawdown es parte del precio.</p>
 
-          <h2>Hipótesis enterradas con datos</h2>
-          <p>El trabajo invisible que da valor al resto: el intradía murió por matemáticas, la venta en corto fue negativa en nueve variantes, una rotación de momentum perdió contra su propia cesta y un sistema con métricas espectaculares resultó ser un artefacto estadístico. Siete ideas enterradas y siete bugs de metodología cazados por el camino.</p>
-          <p><a class="lnk" href="#caso-hipotesis" data-case="hipotesis">Leer las notas de método <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          <h2>El forward test</h2>
+          <p>Desde julio de 2026, ambos sistemas corren <b>solos</b> contra la API de un bróker en cuenta simulada: bots propios, ejecución programada en runners en la nube (sin ningún PC encendido), estado reconciliado contra el bróker en cada ciclo, y cada decisión —cada orden, cada fallo, cada reparación— consignada en un historial de git que funciona como registro de auditoría inmutable.</p>
+          <h3>Criterios congelados antes del día cero</h3>
+          <div class="tbl"><table>
+            <thead><tr><th>Sistema</th><th class="num">Muestra mínima</th><th class="num">Factor de beneficio mínimo</th><th>Extra</th></tr></thead>
+            <tbody>
+              <tr><td><b>Hermes 4</b></td><td class="num">40 operaciones</td><td class="num">1,15</td><td>0 señales saltadas</td></tr>
+              <tr><td><b>Selene</b></td><td class="num">30 operaciones</td><td class="num">1,30</td><td>0 señales saltadas</td></tr>
+            </tbody>
+          </table></div>
+          <p>Fijados el 9 de julio de 2026, antes de la primera orden. Cambiar parámetros, sizing o universo a mitad del forward invalida el experimento entero; si algo parece necesitar un ajuste, se anota como incidencia y no se toca. El listón no se mueve — ni siquiera cuando incomoda.</p>
+          <h3>Estado a 1 de septiembre de 2026</h3>
+          <div class="tbl"><table>
+            <thead><tr><th></th><th class="num">Hermes 4</th><th class="num">Selene</th></tr></thead>
+            <tbody>
+              <tr><td>Resultado desde el día cero</td><td class="num"><span class="pos">+12,0 %</span></td><td class="num"><span class="pos">+6,4 %</span> (latente)</td></tr>
+              <tr><td>Operaciones cerradas / mínimo</td><td class="num">16 / 40</td><td class="num">0 / 30</td></tr>
+              <tr><td>Factor de beneficio</td><td class="num">1,46</td><td class="num">—</td></tr>
+              <tr><td>Señales saltadas</td><td class="num">0</td><td class="num">0</td></tr>
+            </tbody>
+          </table></div>
+          <p>Nueve incidencias registradas en el primer mes y medio, <b>ninguna con señales perdidas desde el día cero</b>. Casi todas comparten una raíz: el simulador del bróker y la infraestructura gratuita fallan de maneras que ningún backtest modela — ventanas de ejecución que no ejecutan o ejecutan parcialmente, runners que arrancan con horas de retraso, un fallo de plataforma que dejó una compra a medio registrar y provocó una compra duplicada al día siguiente. Cada una obligó a endurecer la misma debilidad de diseño: <em>dar algo por hecho sin confirmarlo</em>.</p>
+          <blockquote>«Preferir seguir midiendo a asumir: ante un fallo de infraestructura, reintento con escalado y registro — no sustituir el mecanismo por un solo caso.»<span class="who">— regla operativa adoptada tras la incidencia nº 7</span></blockquote>
+          <p>Detalle que define el proyecto: Selene pasó sus primeras <b>semanas de forward sin poder abrir una sola posición</b> — su interruptor de régimen llevaba meses apagado, haciendo exactamente aquello para lo que se diseñó. Cuando el régimen giró, el sistema despertó solo, sin intervención humana. Ambas cosas —la espera y el despertar— están en el registro. Con 16 y 0 operaciones cerradas, ninguna cifra actual es aún estadísticamente significativa, <em>y eso también se dice</em>: el forward no está para celebrar resultados parciales sino para acumular muestra.</p>
+          <p class="note">Limitaciones publicadas antes del veredicto. El registro mantiene un documento separado de limitaciones conocidas. La mayor: el sizing por riesgo demanda más apalancamiento del que un bróker real concede (pico observado de 2,75× frente al límite legal de 2×). Medido en backtest sobre el rango completo: acotar al límite legal cuesta ~4 % del resultado; operar sin margen lo recorta a menos de la mitad. La decisión de capital real deberá incorporarlo — y está escrito desde agosto, no se descubrirá en octubre.</p>
 
-          <h2>Infraestructura</h2>
-          <div class="cells">
-            <div class="cell"><p class="k">Framework de backtesting en Python</p><p>Construido a medida: fricción pesimista, prevención de look-ahead, simulación de cartera y métricas como profit factor, CAGR, drawdown y Sharpe deflactado.</p></div>
-            <div class="cell"><p class="k">Suite Monte Carlo</p><p>Bootstrap, permutación, drop y stress tests con gráficos, más la variante propia para capitalización compuesta.</p></div>
-            <div class="cell"><p class="k">Bots de ejecución autónomos</p><p>Corren contra la API REST de un bróker en cuenta simulada: órdenes programadas, stops persistidos en el bróker, reconciliación de estado, ejecución desatendida y portables entre Windows y macOS.</p></div>
-            <div class="cell"><p class="k">Documentación</p><p>Más de doce informes técnicos en PDF y markdown con registro de decisiones fechado. Cada cambio en cada sistema tiene fecha, motivo y resultado.</p></div>
+          <h2>Cronología</h2>
+          <p>Casi todo el embudo se ejecutó en unas semanas intensas de verano. Las fechas son reales, del registro de cambios:</p>
+          <div class="tline">
+            <div class="row"><div class="d">jun 2026</div><div class="e"><b>Arranca el proyecto.</b> Primer sistema intradía (Hermes 2) y framework propio de backtesting: fricción pesimista, prevención de look-ahead, métricas deflactadas.</div></div>
+            <div class="row"><div class="d">02 jul</div><div class="e">Hermes 2 <b>archivado</b> con informe forense.</div></div>
+            <div class="row"><div class="d">04 jul</div><div class="e">Hermes 3 y 3.1 <b>archivados</b> el mismo día que la investigación intradía cierra la puerta entera: la señal máxima es menor que el peaje. Hermes 4 aprueba su juez temporal (una mirada).</div></div>
+            <div class="row"><div class="d">05 jul</div><div class="e">Hermes 4 refinado bajo presupuesto declarado de ejecuciones; una ampliación de universo se <b>rechaza</b> por empeorar todas las métricas — y queda registrada.</div></div>
+            <div class="row"><div class="d">08 jul</div><div class="e">Hécate ×3 <b>archivadas</b> (nueve mediciones cortas, un día). Éolo <b>pausada</b> antes de correr. Caronte: Hermes 4 aprueba con −6,5 % medido.</div></div>
+            <div class="row"><div class="d">09 jul</div><div class="e">Deméter y Gea <b>archivadas</b>. Selene aprueba diseño y gemelo. <b>Criterios del forward congelados por escrito.</b></div></div>
+            <div class="row"><div class="d">13 jul</div><div class="e">Delfos <b>archivada</b>: el ojo humano no supera al azar líquido.</div></div>
+            <div class="row"><div class="d">16–21 jul</div><div class="e"><b>Día cero del forward</b> para ambos sistemas, tras dos reinicios documentados con cuentas intactas (cero fills: mover la fecha no seleccionó resultados).</div></div>
+            <div class="row"><div class="d">20 jul</div><div class="e">Teseo <b>archivada</b>: valor esperado negativo por diseño del juego.</div></div>
+            <div class="row"><div class="d">jul–ago</div><div class="e">Nueve incidencias de infraestructura, <b>cero señales perdidas</b>. La máquina de estados de ejecución se endurece incidencia a incidencia.</div></div>
+            <div class="row"><div class="d">ago 2026</div><div class="e">El régimen de Selene <b>gira a encendido</b> tras muchos meses apagado; el sistema despierta solo y abre sus primeras posiciones.</div></div>
+            <div class="row"><div class="d">oct 2026</div><div class="e"><b>Veredicto</b> contra los criterios congelados. Si pasa → considerar capital real. Si no pasa → archivar con datos, como todo lo demás.</div></div>
           </div>
 
+          <h2>Bugs cazados</h2>
+          <p>Un protocolo también se equivoca. La diferencia está en si sus errores se cazan, se cuantifican y se publican. Siete de metodología, resumidos aquí — el desglose forense completo está en las notas de método:</p>
+          <ol>
+            <li><b>La herramienta de análisis elegía «el último backtest» por orden alfabético</b> en lugar de por fecha — llegó a poder auditar los resultados de un sistema distinto del que se creía estar midiendo.</li>
+            <li><b>Monte Carlo estándar sobre series compuestas</b>: producía drawdowns imposibles (−195 %). Se desarrolló una variante propia para interés compuesto.</li>
+            <li><b>Denominadores de CAGR inflados</b> — infravaloraban el retorno anualizado: el sesgo iba en contra del proyecto. Detectados mediante revisión externa cruzada con otro modelo de IA.</li>
+            <li><b>Sesgo de supervivencia</b>: cuantificado (−6,5 %), no supuesto.</li>
+            <li><b>Apalancamiento de papel</b> que ninguna cuenta real permitiría (pico observado de 2,75× frente al 2× legal), con su interés de margen oculto estimado.</li>
+            <li><b>Caché histórica sin ajustar por splits</b>: el backtest y el bot en producción operaban sobre series de precios distintas. La mayor «operación ganadora» del backtest crudo resultó ser un split de ratio extremo — un artefacto que aportaba ~+18 % del capital en un solo apunte falso.</li>
+            <li><b>El registro de ejecución mentía en ambas direcciones</b>: el bot llegó a dar por cerrada una salida que nunca se ejecutó, y a etiquetar como «sin ejecución» ventas que sí se habían ejecutado a medias. El arreglo pasó por revisión adversarial automatizada… que encontró un fallo crítico <em>en el propio arreglo</em> antes de subirlo.</li>
+          </ol>
+          <blockquote>«El sesgo estaba acotado por diseño; ahora está medido.»<span class="who">— registro de cambios, entrada de la auditoría de supervivencia</span></blockquote>
+          <p><a class="lnk" href="#caso-hipotesis" data-case="hipotesis">Leer las notas de método completas <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+
           <h2>Lecciones</h2>
-          <ul>
-            <li>La fricción y los costes importan más que la señal: mídelos primero.</li>
-            <li>Si no prerregistras la hipótesis, el backtest te dirá lo que quieres oír.</li>
-            <li>La validación sobre datos vírgenes no es opcional: <b>es</b> la prueba.</li>
-            <li>Las pérdidas llegan en racimos porque los regímenes se agrupan; las medianas estadísticas subestiman el dolor real.</li>
-            <li>Enterrar siete ideas con datos vale más que enamorarse de una sin ellos.</li>
-          </ul>
-          <p class="note">Proyecto de investigación personal con fines educativos. Nada de esto constituye asesoramiento financiero. El método y los parámetros no son públicos; el detalle completo está disponible bajo petición.</p>
+          <ol>
+            <li><b>La fricción importa más que la señal.</b> Medir el coste primero mató tres sistemas antes de construirlos del todo — y pausó un cuarto antes de empezar.</li>
+            <li><b>Sin hipótesis prerregistrada, el backtest te dirá lo que quieres oír.</b> El candidato de +9,9 % por evento era mentira, y solo el protocolo lo supo.</li>
+            <li><b>La validación en datos vírgenes no es opcional: es EL test.</b> Todo lo demás es ensayo general.</li>
+            <li><b>El benchmark interno va primero.</b> Una estrategia que no bate a la cesta tonta de su propio universo no necesita más análisis.</li>
+            <li><b>Las pérdidas llegan en racimo.</b> Los regímenes existen; las medianas estadísticas subestiman el dolor real de atravesarlos.</li>
+            <li><b>Enterrar siete ideas con datos vale más que enamorarse de una sin ellos.</b> El cementerio es la credencial.</li>
+          </ol>
+          <p>Ambos supervivientes siguen en periodo de prueba. El veredicto de octubre se emitirá contra los criterios congelados en julio, se publique lo que se publique — y si es un entierro, será el octavo, con sus números, como todos los demás.</p>
+          <p class="note">Proyecto de investigación personal con fines educativos. Nada de esto constituye asesoramiento financiero. Método, parámetros, umbrales y universos exactos permanecen deliberadamente fuera del texto y no son públicos.</p>
           <div class="caso-actions">
             <a class="btn" href="#contacto" data-ask="Me gustaría recibir el informe completo de Argos: ">Pedir el informe completo <span class="ar">⟶</span></a>
             <a class="lnk" href="#proyectos" data-back>Volver a proyectos <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -1125,10 +1333,13 @@ body.detail .rail{display:none}
         <aside class="panel caso-meta">
           <b class="tk tl"></b><b class="tk tr"></b><b class="tk bl"></b><b class="tk br"></b>
           <div class="panel-h">Ficha</div>
-          <div class="kv"><p class="k">Estado</p><p class="v">En marcha · forward test automatizado</p></div>
+          <div class="kv"><p class="k">Estado</p><p class="v">Forward test automatizado desde jul 2026</p></div>
           <div class="kv"><p class="k">Periodo de estudio</p><p class="v">2019 — 2026 · siete años de datos</p></div>
           <div class="kv"><p class="k">Universo</p><p class="v">+180 activos: acciones de EE.&nbsp;UU. y Europa, y cripto</p></div>
-          <div class="kv"><p class="k">Sistemas validados</p><p class="v">2 de 9 familias de estrategias</p></div>
+          <div class="kv"><p class="k">Familias evaluadas</p><p class="v">9 · siete enterradas, dos vivas</p></div>
+          <div class="kv"><p class="k">Supervivientes</p><p class="v">Hermes 4 (swing USA) · Selene (cripto)</p></div>
+          <div class="kv"><p class="k">Señales perdidas</p><p class="v">0 desde el día cero</p></div>
+          <div class="kv"><p class="k">Veredicto</p><p class="v">Octubre 2026, contra criterios congelados en julio</p></div>
           <div class="kv"><p class="k">Stack</p><p class="v">Python · Monte Carlo · API REST de bróker</p></div>
           <div class="kv"><p class="k">Rol</p><p class="v">Founder y único desarrollador</p></div>
         </aside>
@@ -1150,34 +1361,189 @@ body.detail .rail{display:none}
       </header>
       <div class="caso-grid">
         <div class="caso-body">
-          <h2>Lo que murió y por qué</h2>
-          <ul>
-            <li><b>Intradía, tres sistemas.</b> Murió matemáticamente: un estudio sobre 69.000 observaciones mostró que la señal máxima disponible dentro del día es menor que el coste de operar.</li>
-            <li><b>Venta en corto, nueve variantes en tres generaciones.</b> Negativa en todos los casos. En el universo estudiado la debilidad rebota: vender caídas equivale a comprar squeezes.</li>
-            <li><b>Rotación de momentum en acciones con dividendo.</b> Perdió contra su propia cesta pasiva equiponderada.</li>
-            <li><b>El artefacto.</b> Un sistema con métricas espectaculares en el grupo de diseño (+9,9 % por operación) resultó ser un artefacto estadístico que se desplomó en los dos universos de control. Exactamente para eso existe el protocolo.</li>
-          </ul>
+          <h2>Por qué publicar fracasos</h2>
+          <p>Por la misma razón por la que un universo de acciones elegido hoy miente sobre el pasado: la supervivencia sesga. Si de nueve familias de estrategias solo se enseñan las dos que funcionaron, el lector no puede distinguir un proceso riguroso de una búsqueda infinita que se detuvo al encontrar algo bonito. La única forma de demostrar que el embudo era real es <b>enseñar lo que el embudo mató</b> — con números, fechas y criterios que estaban escritos antes de conocer el resultado.</p>
+          <div class="stats">
+            <div><p class="n k">7</p><p class="l">familias enterradas</p></div>
+            <div><p class="n k">9+16</p><p class="l">mediciones cortas, cero aprobadas</p></div>
+            <div><p class="n">69.258</p><p class="l">ticker-días en el panel intradía</p></div>
+            <div><p class="n k">7</p><p class="l">bugs de metodología</p></div>
+            <div><p class="n">1</p><p class="l">familia pausada por honestidad</p></div>
+          </div>
+          <p>Cada entierro de esta página siguió el mismo rito: hipótesis prerregistrada, criterio de muerte declarado, medición, veredicto aplicado sin apelación («kill aplicado» en el registro), y archivo con los datos dentro. Ninguna familia muerta fue re-testeada con retoques hasta que confesara otra cosa.</p>
+          <p class="note">Nota de alcance. Se omiten deliberadamente parámetros, ventanas, umbrales, listas de activos y reglas operables: este documento demuestra el método, no regala el sistema. Las cifras que sí aparecen son resultados y diagnósticos — suficientes para auditar el razonamiento, insuficientes para replicar las estrategias.</p>
 
-          <h2>Bugs de metodología cazados por el camino</h2>
-          <p>Siete en total. Entre ellos:</p>
-          <ul>
-            <li>Resultados seleccionados alfabéticamente en lugar de por fecha.</li>
-            <li>Monte Carlo estándar aplicado a series compuestas, que producía drawdowns imposibles del −195 %.</li>
-            <li>Denominadores de CAGR inflados, detectados en una revisión externa con otro modelo de IA.</li>
-            <li>Sesgo de supervivencia cuantificado en −6,5 % en lugar de asumido.</li>
-            <li>Apalancamiento de papel que ninguna cuenta real permitiría bajo el límite legal Reg-T, con su coste de margen oculto estimado.</li>
-          </ul>
+          <h2>Tumba I · el intradía</h2>
+          <h3>Murió por aritmética, no por mala suerte</h3>
+          <p class="grave">Hermes 2 · Hermes 3 · Hermes 3.1 — <b>† jul 2026</b></p>
+          <p>Tres generaciones de sistemas de day-trading, cada una más disciplinada que la anterior. Tras archivar las dos primeras, la pregunta correcta ya no era «¿qué reglas probamos ahora?» sino «¿queda <em>algo</em> operable dentro del día, o el problema es estructural?». Se construyó un panel propio: <b>69.258 ticker-días</b> de decenas de acciones líquidas, troceando cada sesión en tramos horarios.</p>
+          <div class="tbl"><table>
+            <thead><tr><th>Tramo de la sesión</th><th class="num">Retorno medio (pb/día)</th></tr></thead>
+            <tbody>
+              <tr><td><b>Noche</b> (cierre → apertura)</td><td class="num"><span class="pos">+5,65</span></td></tr>
+              <tr><td>Primera media hora</td><td class="num">+1,55</td></tr>
+              <tr><td>Media mañana</td><td class="num">+0,00</td></tr>
+              <tr><td>Mediodía</td><td class="num">+1,80</td></tr>
+              <tr><td>Penúltima media hora</td><td class="num"><span class="neg">−1,28</span></td></tr>
+              <tr><td>Última media hora</td><td class="num">−0,04</td></tr>
+              <tr><td>Sesión completa (apertura → cierre)</td><td class="num">+2,36</td></tr>
+              <tr><td><b>Cierre a cierre</b></td><td class="num"><span class="pos">+7,85</span></td></tr>
+            </tbody>
+          </table></div>
+          <p>La lectura es demoledora para cualquier day-trader sistemático: <b>el ~72 % del retorno de las acciones ocurre con el mercado cerrado</b>. La deriva intradía media (+2,36 pb) esconde una <em>mediana negativa</em> (−1,65): el día típico pierde, y la media la sostiene un único año bueno. Contra eso, el peaje de operar (spread + slippage medidos: 12–13 pb por operación) supera a la mejor señal encontrada en el dataset (±8–14 pb). No hay parámetro que arregle una desigualdad: cualquier sistema viable debe <em>mantener posiciones días</em>, donde el peaje se amortiza.</p>
+          <h3>El espejismo que justifica todo el protocolo</h3>
+          <p>Antes de cerrar la puerta, el estudio de señal encontró un candidato de reversión brillante: <b>+9,9 % en unidades de volatilidad por evento</b>, positivo los cuatro años del grupo de diseño, robusto a atípicos y a valores concretos. Cualquier proceso menos paranoico lo habría puesto a operar. El protocolo lo mandó a los universos vírgenes:</p>
+          <div class="tbl"><table>
+            <thead><tr><th>Universo</th><th>Rol</th><th class="num">Operaciones</th><th class="num">Factor de beneficio</th></tr></thead>
+            <tbody>
+              <tr><td>A</td><td>diseño</td><td class="num">270</td><td class="num"><span class="pos">1,36</span></td></tr>
+              <tr><td>B</td><td>gemelo intocado</td><td class="num">194</td><td class="num"><span class="neg">0,95</span></td></tr>
+              <tr><td>C</td><td>virgen, descargado ex profeso</td><td class="num">276</td><td class="num"><span class="neg">0,85</span></td></tr>
+            </tbody>
+          </table></div>
+          <p>Un artefacto del grupo de diseño, perfecto y letal. Es el ejemplo que se usa en el proyecto para explicar por qué existe la validación cruzada: <b>el backtest te dirá lo que quieres oír; los datos vírgenes, no</b>.</p>
 
-          <h2>Lecciones</h2>
+          <h2>Tumba II · el corto</h2>
+          <h3>Veinticinco mediciones, un solo veredicto</h3>
+          <p class="grave">Hécate · Hécate 2 · Hécate 3 — <b>† 8 jul 2026, las tres el mismo día</b> · segunda ronda: ago 2026</p>
+          <p>Si comprar fuerza funciona, ¿vender debilidad no debería funcionar simétricamente? La hermana bajista del sistema ganador lo probó con el mismo rigor — hipótesis prerregistradas antes de correr, fricción y coste de préstamo incluidos:</p>
+          <div class="tbl"><table>
+            <thead><tr><th>Generación</th><th>Familia corta</th><th class="num">Resultado</th><th>Veredicto</th></tr></thead>
+            <tbody>
+              <tr><td>Hécate</td><td>Vender rupturas a la baja</td><td class="num"><span class="neg">−0,76 %/op.</span></td><td>Falla</td></tr>
+              <tr><td>Hécate</td><td>Vender rebotes fallidos</td><td class="num"><span class="neg">−0,79 %/op.</span></td><td>Falla</td></tr>
+              <tr><td>Hécate</td><td>Vender rallies en bajista (control)</td><td class="num"><span class="neg">mediana neg.</span></td><td>Falla</td></tr>
+              <tr><td>Hécate 2</td><td>Evento de hueco bajista confirmado</td><td class="num"><span class="neg">−0,51 %/op.</span></td><td>Falla</td></tr>
+              <tr><td>Hécate 2</td><td>Corto del peor decil, cubierto con índice</td><td class="num"><span class="neg">el peor decil BATE al índice</span></td><td>Falla — reversión domina</td></tr>
+              <tr><td>Hécate 2</td><td>Ráfagas de noticias negativas</td><td class="num">n insuficiente</td><td>Inmedible</td></tr>
+              <tr><td>Hécate 3</td><td>Hueco bajista tras resultados</td><td class="num"><span class="neg">−3,89 %/op.</span></td><td>Falla</td></tr>
+              <tr><td>Hécate 3</td><td>Sorpresa negativa de beneficios</td><td class="num">dato no disponible</td><td>Inmedible</td></tr>
+            </tbody>
+          </table></div>
+          <p>El backtest documental de la mejor variante, con cartera completa: <b>factor de beneficio 0,72 y drawdown del −59 %</b> — pierde en cuatro de los años medidos. Las razones no son de parámetros sino de estructura: (1) las acciones derivan al alza (+7,85 pb/día, medidos arriba); (2) lo que parece débil rebota con violencia en ventanas cortas — <em>vender caídas equivale a comprar squeezes</em>; (3) las transiciones de régimen masacran al corto justo cuando el filtro de tendencia aún dice «bajista».</p>
+          <h3>La segunda autopsia: dieciséis hipótesis y un espejo</h3>
+          <p>Un mes después, la pregunta volvió («¿y un sistema que venda primero y recompre después?») y se respondió con más artillería: dieciséis hipótesis nuevas evaluadas en paralelo, cada una sometida a un revisor adversarial cuyo único trabajo era matarla. <b>Cero supervivientes.</b> La pieza central fue el espejo exacto: el mismo motor, los mismos datos, la señal invertida —</p>
+          <div class="tbl"><table>
+            <thead><tr><th>Control de simetría</th><th class="num">Lado largo</th><th class="num">Lado corto</th><th>Costes del corto</th></tr></thead>
+            <tbody>
+              <tr><td>Espejo del sistema de acciones</td><td class="num"><span class="pos">FB 1,22</span></td><td class="num"><span class="neg">FB 0,81</span></td><td>préstamo = 0 (regalado)</td></tr>
+              <tr><td>Espejo del sistema cripto</td><td class="num"><span class="pos">FB 2,71</span></td><td class="num"><span class="neg">FB 1,07</span></td><td>funding = 0 (imposible)</td></tr>
+              <tr><td>Cartera corta cripto, mejor caso físico</td><td class="num">—</td><td class="num"><span class="neg">−18 % · DD −63 %</span></td><td>—</td></tr>
+            </tbody>
+          </table></div>
+          <p>El motivo de fondo es geométrico, y explica por qué ningún retoque lo salva: el sistema largo no gana por predicción, gana por la <b>forma del pago</b> — una cola derecha gorda (los aciertos corren) y un stop que trunca la izquierda. Invertir el lado no refleja esa geometría: la destruye. La cola gorda pasa a estar en contra, y el stop trunca exactamente la cola de la que se pretendía vivir.</p>
+          <p class="note">El único número positivo era una trampa. Vender en corto una lista de empresas realmente quebradas dio +2,9 % por operación — sobre una lista construida <em>porque quebraron</em>. Look-ahead de manual: el único resultado verde de veinticinco era, precisamente, el que no se puede operar. Reconocerlo también es parte del registro.</p>
+
+          <h2>Tumba III · la rotación</h2>
+          <h3>Perdió contra su propia cesta</h3>
+          <p class="grave">Deméter — <b>† 9 jul 2026</b></p>
+          <p>Rotación mensual sobre más de un centenar de acciones de dividendo, combinando señales de reparto y momentum. Antes de compararla con ningún índice se le aplicó el benchmark más justo y más cruel: <b>la cesta equiponderada de su propio universo</b>, sin regla alguna.</p>
+          <div class="tbl"><table>
+            <thead><tr><th></th><th class="num">Rotación «inteligente»</th><th class="num">Cesta tonta (equiponderada)</th></tr></thead>
+            <tbody>
+              <tr><td>Exceso anual frente a la cesta</td><td class="num"><span class="neg">−4,3 pp</span></td><td class="num">—</td></tr>
+              <tr><td>Rendimiento anual</td><td class="num">—</td><td class="num"><span class="pos">+10,6 %</span></td></tr>
+              <tr><td>Años en positivo (exceso)</td><td class="num">1 de 4</td><td class="num">—</td></tr>
+              <tr><td>Drawdown de la cesta</td><td class="num">—</td><td class="num">−14,8 %</td></tr>
+            </tbody>
+          </table></div>
+          <p>La regla añadía trabajo, rotación y coste para <em>destruir</em> valor sobre no hacer nada. El hallazgo colateral — que la cesta pasiva del universo era excelente por sí sola — vale más que la estrategia que se pretendía construir, y quedó anotado como tal. Lección de método: <b>el benchmark interno va primero</b>; si no bates a tu propia materia prima, no hay nada más que discutir.</p>
+
+          <h2>Tumba IV · el instrumento equivocado</h2>
+          <p class="grave">Gea — <b>† 9 jul 2026</b> · juez temporal jamás abierto</p>
+          <p>Seguimiento de tendencia long-flat sobre quince ETFs de materias primas. Los números del estudio (−0,32 % por operación, dos de cuatro años en positivo) y de la cartera de diseño (factor de beneficio 0,89) lo mataron en la primera puerta. Pero el epitafio distingue con cuidado <em>qué</em> se refutó: no el trend-following en materias primas — que los CTAs profesionales operan con futuros, en más de cincuenta mercados y en ambas direcciones — sino <b>la aproximación minorista con ETFs long-only</b>, que sangra el contango del subyacente día tras día. El juez temporal quedó virgen a propósito: si algún día hay acceso al instrumento correcto, la hipótesis puede reabrirse sin contaminación.</p>
+
+          <h2>Tumba V · el laberinto que cobra la entrada</h2>
+          <p class="grave">Teseo — <b>† 20 jul 2026</b> · juez temporal jamás abierto</p>
+          <p>Un bot para «challenges» de prop firms — esos exámenes de pago que prometen cuenta financiada a quien gane un +10 % sin perder nunca un −10 % total ni un −5 % en un día. La diana declarada no era el retorno, sino el <b>valor esperado por intento</b>, cuota incluida. Y aquí el protocolo dio un resultado con dos caras:</p>
           <ul>
-            <li>La fricción y los costes importan más que la señal: mídelos primero.</li>
-            <li>Si no prerregistras la hipótesis, el backtest te dirá lo que quieres oír.</li>
-            <li>La validación sobre datos vírgenes no es opcional: <b>es</b> la prueba.</li>
-            <li>Las pérdidas llegan en racimos porque los regímenes se agrupan; las medianas estadísticas subestiman el dolor real.</li>
-            <li>Enterrar siete ideas con datos vale más que enamorarse de una sin ellos.</li>
+            <li><b>Las señales pasaron.</b> El pullback de tendencia en índices y oro era real: el universo gemelo salió <em>mejor</em> que el de diseño (factor de beneficio 1,50 contra 1,25).</li>
+            <li><b>El juego no.</b> Barriendo el mapa de riesgo completo: con riesgo bajo, el challenge no se resuelve en un tiempo razonable; con riesgo alto, la barrera diaria ejecuta. En el mejor punto intermedio, la probabilidad de llegar a cuenta financiada era del 12,5 % y el valor esperado, <b>−334 € por intento</b>.</li>
           </ul>
-          <p class="note">Resumen público de las notas de método de Argos. Los informes técnicos completos —más de doce, en PDF y markdown, con registro de decisiones fechado— están disponibles bajo petición.</p>
-          <!-- ✏️ cuando pases los informes: añade aquí un <iframe class="pdf" src="informe.pdf"> o el texto completo en secciones <h2> -->
+          <p>Un edge honesto de unos pocos puntos al año por unidad de riesgo es, bajo esas reglas, una máquina de quemar cuotas: solo un edge cinco a diez veces mayor saldría a cuenta — y el estudio intradía ya había demostrado que ese edge no existe en estos datos. La estrategia era válida; el producto, matemáticamente hostil. Se archivó sin abrir el juez: <b>nunca hizo falta</b>.</p>
+
+          <h2>Tumba VI · el ojo humano</h2>
+          <h3>No era el edge</h3>
+          <p class="grave">Delfos — <b>† 13 jul 2026</b> · kill aplicado sin tocar una feature</p>
+          <p>Los universos de los sistemas vivos se eligieron a mano, y eso es un sesgo conocido. Delfos preguntó: ¿es capturable ese «ojo» con criterios medibles de conducta de precio y volumen? Si sí, habría whitelist dinámica sin mano humana; si no, había que saberlo. El experimento enfrentó la selección conductual contra un <b>grupo de control aleatorio de valores líquidos</b>, con umbral de victoria prerregistrado (+0,10 de factor de beneficio):</p>
+          <div class="tbl"><table>
+            <thead><tr><th>Universo (reglas congeladas del sistema ganador)</th><th class="num">Factor de beneficio</th></tr></thead>
+            <tbody>
+              <tr><td>Selección conductual («el ojo», operacionalizado)</td><td class="num">1,34</td></tr>
+              <tr><td>Control: aleatorio entre valores líquidos</td><td class="num">1,29</td></tr>
+              <tr><td><b>Diferencia</b> — umbral exigido: +0,10</td><td class="num"><span class="neg">+0,05 · ruido</span></td></tr>
+            </tbody>
+          </table></div>
+          <p>Veredicto aplicado el mismo día, sin añadir features tras ver los números. Y el hallazgo lateral resultó ser el importante: hasta el control <em>aleatorio</em> funcionaba con las reglas congeladas. Tercera evidencia independiente de un mismo hecho — <b>el edge del sistema superviviente vive en sus reglas y su filtro de régimen, no en qué valores se eligieron</b>. Pocas cosas dan más confianza en un sistema que descubrir que su universo es casi intercambiable.</p>
+
+          <h2>Cuarentena · la pausa como resultado</h2>
+          <p class="grave">Éolo (divisas) — <b>pausada antes de correr</b>, jul 2026</p>
+          <p>En FX multidía, el coste de financiación nocturno (swap) es del mismo orden de magnitud que el movimiento del propio precio: los pares mayores se mueven un 5–10 % al año y los diferenciales de tipos han sido del 2–5 % anual en el periodo. Ese coste es una tarifa privada de cada bróker, no un dato de mercado, y no estaba disponible como histórico. Backtestear sin él puede convertir una estrategia perdedora en ganadora en papel — y el único edge FX robustamente documentado es precisamente el carry, que sin ese dato ni siquiera puede formularse como test.</p>
+          <p><b>Decisión: no correr nada.</b> En un proyecto cuya moneda es la credibilidad de sus mediciones, negarse a medir con un instrumento roto es un resultado de pleno derecho — y la demostración más barata de todas las de esta página.</p>
+
+          <h2>Los siete bugs</h2>
+          <p>Todo lo anterior descansa sobre código y datos — que también fallan. Estos son los siete errores de metodología cazados durante el proyecto, con lo que enseñó cada uno. Ninguno se descubrió por suerte: todos cayeron por hábitos deliberados — reconciliar contra fuentes independientes, auditar con otro modelo de IA, y someter los propios arreglos a revisión adversarial.</p>
+
+          <div class="entry">
+            <div class="head"><span class="bn">01</span><span class="name">Selección por orden alfabético</span></div>
+            <p>La herramienta de análisis elegía «el último backtest» por orden alfabético de carpeta en lugar de por fecha real — y llegó a poder examinar los resultados de un sistema distinto del que se creía estar midiendo. Un fallo minúsculo, silencioso y sistemático en <em>qué</em> se auditaba — el tipo de detalle que jamás aparece en un backtest de tutorial.</p>
+            <div class="cause"><b>Lección:</b> la tubería de análisis también es parte del experimento — y también se audita.</div>
+          </div>
+
+          <div class="entry">
+            <div class="head"><span class="bn">02</span><span class="name">Monte Carlo imposible: drawdowns del −195 %</span></div>
+            <p>El remuestreo estándar baraja operaciones como si fueran independientes del capital. Con interés compuesto no lo son: el tamaño de cada operación depende del equity que la precede. El resultado eran métricas absurdas — drawdowns de −195 %, matemáticamente imposibles — que un ojo menos atento habría promediado sin pestañear. Se desarrolló una variante propia de Monte Carlo para series compuestas, que remuestrea retornos porcentuales sobre el equity simulado en lugar de barajar importes sueltos.</p>
+            <div class="cause"><b>Lección:</b> cuando una simulación produce un número imposible, la simulación es el hallazgo.</div>
+          </div>
+
+          <div class="entry">
+            <div class="head"><span class="bn">03</span><span class="name">Denominadores de CAGR inflados</span></div>
+            <p>Un error de contabilidad temporal inflaba el denominador de años sobre el que se anualizaba el retorno, <b>infravalorando</b> el CAGR de varios sistemas — el sesgo iba contra el proyecto: al corregirlo, el CAGR de la configuración final del sistema cripto subió de ~44 % a ~60 %. Lo detectó una <b>revisión externa cruzada con otro modelo de IA</b>, montada precisamente para buscar lo que el autor del código ya no podía ver. Todos los informes afectados se recalcularon y re-emitieron.</p>
+            <div class="cause"><b>Lección:</b> quien escribe el código no puede ser su único auditor. La revisión independiente no es un lujo.</div>
+          </div>
+
+          <div class="entry">
+            <div class="head"><span class="bn">04</span><span class="name">Sesgo de supervivencia: medido, no supuesto</span></div>
+            <p>Todo universo elegido en el presente está hecho de supervivientes. En lugar de despachar la objeción con un párrafo, se reconstruyó una lista de empresas prominentes que quebraron o fueron deslistadas — declarada antes de correr — y se re-ejecutó el sistema con ellas dentro. Peaje medido: <b>−6,5 %</b>, frente a un umbral de invalidación prefijado del 15 %. De propina apareció el mecanismo protector: el filtro de tendencia mantiene fuera a las empresas en espiral de muerte, que viven bajo sus medias.</p>
+            <div class="cause"><b>Lección:</b> las objeciones estructurales se cuantifican; un número pequeño y medido vale más que mil descargos.</div>
+          </div>
+
+          <div class="entry">
+            <div class="head"><span class="bn">05</span><span class="name">Apalancamiento de papel</span></div>
+            <p>El sizing por riesgo constante tiene una consecuencia no obvia: cuando los stops quedan cerca, las posiciones se agrandan, y la suma puede superar el capital. En cuenta simulada nadie protesta — el forward llegó a operar con el efectivo en negativo — pero el apalancamiento observado llegó a un pico de <b>2,75× el capital, por encima del 2× que permite la regulación</b>, y la aritmética de la cartera llena admite picos mayores: un bróker real habría rechazado esas órdenes, y el backtest asumía que no. Medido el coste de acotarlo al límite legal sobre el rango completo: ~−4 % del resultado (y sin margen alguno, el resultado se recorta a menos de la mitad). Medido también el interés de margen que el motor no cobraba: ~−2 % del resultado al año. Ambos números viven ahora en un registro de limitaciones publicado <em>antes</em> del veredicto.</p>
+            <div class="cause"><b>Lección:</b> un backtest no solo simula la estrategia — simula (mal) al bróker. Cada supuesto implícito del bróker es un bug en potencia.</div>
+          </div>
+
+          <div class="entry">
+            <div class="head"><span class="bn">06</span><span class="name">Dos series de precios distintas</span></div>
+            <p>La caché histórica de datos intradía guardaba precios crudos, sin ajustar por splits; el bot en producción pedía precios ajustados. Consecuencia: <b>el backtest que validó el sistema y el bot que lo opera no miraban la misma serie</b>. Más de una docena de operaciones societarias en el universo generaban caídas fantasma de hasta el −95 % en la serie cruda — y la mayor «operación ganadora» de todo el backtest sin ajustar resultó ser un split de ratio extremo que aportaba ~+18 % del capital en un solo apunte falso. Se verificó ticker a ticker y la reconstrucción quedó planificada con una regla dura: <b>ningún número se compara con el forward hasta que la serie esté limpia</b>, y ninguna decisión de capital se toma contra la referencia sucia.</p>
+            <div class="cause"><b>Lección:</b> backtest y producción deben beber del mismo dato, byte a byte. «Casi la misma serie» no existe.</div>
+          </div>
+
+          <div class="entry">
+            <div class="head"><span class="bn">07</span><span class="name">El log que mentía — y el arreglo que casi rompe más</span></div>
+            <p>Ciertas ventanas de ejecución del simulador ejecutan las órdenes a veces, a veces no, y a veces <em>a medias</em>. El registro del bot llegó a mentir en ambas direcciones — dio por cerrada una salida que nunca se ejecutó, y etiquetó como «sin ejecución» ventas ejecutadas a medias — y en el peor incidente un fallo de plataforma dejó una compra a medio anotar, lo que provocó que al día siguiente el sistema la comprara <em>otra vez</em>. La reconstrucción obligó a un principio de diseño: ninguna orden se da por ejecutada, cancelada ni registrada sin confirmación del bróker, y el estado se reconcilia contra él en cada ciclo. El detalle más útil: el arreglo se sometió a una <b>revisión adversarial automatizada</b> (veintidós hallazgos, catorce refutados, ocho confirmados) que encontró un fallo <em>crítico en el propio arreglo</em> — un orden de operaciones que podía dejar una posición sin protección y sin vía de reintento — antes de que llegara a producción.</p>
+            <div class="cause"><b>Lección:</b> los arreglos también fallan. Revisar adversarialmente el parche vale tanto como escribirlo.</div>
+          </div>
+
+          <h2>El patrón detrás de todo</h2>
+          <p>Mirados juntos, los siete bugs y las nueve incidencias operativas del forward comparten una única raíz: <b>dar algo por bueno sin confirmarlo</b>. El backtest daba por buena la serie de precios; el Monte Carlo, la independencia de las operaciones; el motor, la benevolencia del bróker; el bot, la ejecución de sus órdenes. Cada endurecimiento del proyecto — humano o de código — consiste en sustituir una suposición por una verificación.</p>
+          <blockquote>«Preferir seguir midiendo a asumir.»<span class="who">— regla operativa del proyecto</span></blockquote>
+          <p>La segunda constante es el valor de la <b>mirada externa</b>: el bug del CAGR lo cazó otro modelo de IA; el fallo crítico del parche, una revisión adversarial montada ex profeso; el espejismo del +9,9 %, un universo que nadie había tocado. Ningún proceso se audita bien a sí mismo — ni las personas, ni los backtests, ni los parches.</p>
+
+          <h2>Lecciones de método</h2>
+          <ol>
+            <li><b>Mide el coste antes que la señal.</b> Tres familias murieron por fricción y una se pausó por un coste inmedible. El coste es la hipótesis nula.</li>
+            <li><b>Prerregistra o autoengáñate.</b> Sin criterio de muerte firmado de antemano, siempre hay un motivo para seguir iterando «solo una vez más».</li>
+            <li><b>Los datos vírgenes son EL test.</b> Un resultado que no viaja a un universo intocado no es un resultado: es una anécdota del grupo de diseño.</li>
+            <li><b>El benchmark interno primero.</b> Antes de compararte con el mundo, compárate con no hacer nada sobre tu propia materia prima.</li>
+            <li><b>Cuantifica las objeciones estructurales.</b> Supervivencia, apalancamiento, coste de margen: todo lo que se pueda medir, se mide y se publica antes del veredicto.</li>
+            <li><b>Cada suposición sobre el bróker es un bug latente.</b> Subastas, préstamo de títulos, márgenes, splits: el mundo real cobra lo que el simulador regala.</li>
+            <li><b>Audita con ojos ajenos</b> — otro universo, otro modelo, otro proceso. Y audita también los arreglos.</li>
+            <li><b>Publica los entierros.</b> Es la única prueba de que los supervivientes no son casualidades seleccionadas.</li>
+          </ol>
+          <p><a class="lnk" href="#caso-argos" data-case="argos">Volver al caso de estudio de Argos <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          <p class="note">Las cifras proceden de simulaciones históricas con costes pesimistas o de cuenta simulada; no son rendimientos reales ni promesa de rendimientos futuros. Nada de este documento constituye asesoramiento financiero. Parámetros, ventanas, umbrales, universos y reglas operables se omiten deliberadamente.</p>
           <div class="caso-actions">
             <a class="btn" href="#contacto" data-ask="Me gustaría recibir las notas de método completas de Argos: ">Pedir los informes completos <span class="ar">⟶</span></a>
             <a class="lnk" href="#proyectos" data-back>Volver a proyectos <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -1187,9 +1553,11 @@ body.detail .rail{display:none}
           <b class="tk tl"></b><b class="tk tr"></b><b class="tk bl"></b><b class="tk br"></b>
           <div class="panel-h">Ficha</div>
           <div class="kv"><p class="k">Tipo</p><p class="v">Notas de método · Argos</p></div>
-          <div class="kv"><p class="k">Ideas enterradas</p><p class="v">7 de 9 familias</p></div>
-          <div class="kv"><p class="k">Bugs de metodología</p><p class="v">7 detectados y corregidos</p></div>
-          <div class="kv"><p class="k">Muestra intradía</p><p class="v">69.000 observaciones</p></div>
+          <div class="kv"><p class="k">Familias enterradas</p><p class="v">7 de 9 · una más en cuarentena</p></div>
+          <div class="kv"><p class="k">Mediciones del corto</p><p class="v">9 + 16 · cero aprobadas</p></div>
+          <div class="kv"><p class="k">Muestra intradía</p><p class="v">69.258 ticker-días</p></div>
+          <div class="kv"><p class="k">Bugs de metodología</p><p class="v">7 cazados y cuantificados</p></div>
+          <div class="kv"><p class="k">Documento hermano</p><p class="v">«Nueve familias entraron. Dos salieron.»</p></div>
           <div class="kv"><p class="k">Informes completos</p><p class="v">Bajo petición</p></div>
         </aside>
       </div>
