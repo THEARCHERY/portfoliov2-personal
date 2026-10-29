@@ -43,7 +43,7 @@ A fifth report, **Hipótesis enterradas con datos**, collects the discarded stra
 - **Email:** gonzalo.rcarrato@gmail.com
 - **LinkedIn:** [gonzalo-maría-romero-carrato](https://www.linkedin.com/in/gonzalo-mar%C3%ADa-romero-carrato-7b3312369/)
 - **GitHub:** [@THEARCHERY](https://github.com/thearchery)
-- **Location:** Madrid, Spain — open to remote & relocation
+- **Location:** Madrid, Spain — remote, or hybrid in Madrid
 
 ---
 <div align="center">
